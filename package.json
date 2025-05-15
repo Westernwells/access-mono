@@ -1,0 +1,15 @@
+{
+  "name": "access-mono",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "podman-compose up --build -d",
+    "start": "podman-compose up -d",
+    "stop": "podman-compose down"
+  },
+  "license": "MIT"
+}

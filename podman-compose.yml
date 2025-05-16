@@ -13,6 +13,8 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
+    networks:
+      - access-net
 
   hasura:
     container_name: access-hasura
@@ -22,6 +24,8 @@ services:
     depends_on:
       - postgres
     restart: always
+    networks:
+      - access-net
     environment:
       HASURA_GRAPHQL_JWT_SECRET: |
         {
@@ -37,12 +41,22 @@ services:
     container_name: access-api
     build:
       context: ./apps/api
-      dockerfile: Dockerfile
+      dockerfile: Podmanfile
+    working_dir: /usr/src/app
+    command: yarn start
     ports:
       - "3838:3838"
     volumes:
-      - ./apps/api:/app
-      - /app/node_modules
+      - ./apps/api:/usr/src/app
+      - node_modules_volume:/usr/src/app/node_modules
+    restart: always
+    networks:
+      - access-net
 
 volumes:
   postgres_data:
+  node_modules_volume:
+
+networks:
+  access-net:
+    driver: bridge

@@ -1,0 +1,17 @@
+FROM node:20
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN yarn install
+
+RUN npm install -g tsx typescript
+
+COPY . .
+
+RUN yarn build
+
+EXPOSE 3838
+
+CMD ["yarn", "start"] 

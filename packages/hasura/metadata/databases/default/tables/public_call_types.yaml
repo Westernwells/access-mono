@@ -1,0 +1,4 @@
+table:
+  name: call_types
+  schema: public
+is_enum: true

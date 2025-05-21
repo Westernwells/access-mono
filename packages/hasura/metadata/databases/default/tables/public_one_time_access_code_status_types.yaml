@@ -1,0 +1,4 @@
+table:
+  name: one_time_access_code_status_types
+  schema: public
+is_enum: true

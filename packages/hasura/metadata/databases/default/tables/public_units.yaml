@@ -1,0 +1,15 @@
+table:
+  name: units
+  schema: public
+object_relationships:
+  - name: building
+    using:
+      foreign_key_constraint_on: building_id
+array_relationships:
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: unit_id
+        table:
+          name: users
+          schema: public

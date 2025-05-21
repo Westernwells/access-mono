@@ -1,0 +1,4 @@
+table:
+  name: two_fa_types
+  schema: public
+is_enum: true

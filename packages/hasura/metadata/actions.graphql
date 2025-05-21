@@ -1,0 +1,18 @@
+type Mutation {
+  userSignUp(
+    signUpData: userSignUpInput!
+  ): userSignUpOutput!
+}
+
+input userSignUpInput {
+  buildingId: uuid!
+  unitId: uuid!
+  name: String!
+  phone: String!
+  email: String
+}
+
+type userSignUpOutput {
+  accessToken: String!
+}
+

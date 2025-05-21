@@ -1,0 +1,39 @@
+table:
+  name: users
+  schema: public
+object_relationships:
+  - name: building
+    using:
+      foreign_key_constraint_on: building_id
+  - name: unit
+    using:
+      foreign_key_constraint_on: unit_id
+array_relationships:
+  - name: call_logs
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: call_logs
+          schema: public
+  - name: notifications
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: notifications
+          schema: public
+  - name: one_time_access_codes
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: one_time_access_code
+          schema: public
+  - name: settings
+    using:
+      foreign_key_constraint_on:
+        column: user_id
+        table:
+          name: settings
+          schema: public

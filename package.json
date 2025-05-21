@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "podman-compose up --build -d",
     "start": "podman-compose up -d",
-    "stop": "podman-compose down"
+    "stop": "podman-compose down",
+    "hasura:console": "cd packages/hasura && hasura console",
+    "generate": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --verbose",
+    "generate:watch": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --watch --verbose"
   },
   "license": "MIT"
 }

@@ -36,8 +36,8 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
       HASURA_GRAPHQL_ENABLE_CONSOLE: ${HASURA_GRAPHQL_ENABLE_CONSOLE}
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: ${HASURA_GRAPHQL_ENABLED_LOG_TYPES}
-      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      HASURA_API_URL: ${HASURA_API_URL}
+      EXPRESS_API_URL: ${EXPRESS_API_URL}
+      HASURA_GRAPHQL_UNAUTHORIZED_ROLE: ${HASURA_GRAPHQL_UNAUTHORIZED_ROLE}
 
   api:
     container_name: access-api
@@ -46,6 +46,8 @@ services:
       dockerfile: Podmanfile
     working_dir: /usr/src/app
     command: yarn start
+    env_file:
+      - ./.env
     ports:
       - "3838:3838"
     volumes:

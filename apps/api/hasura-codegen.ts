@@ -1,9 +1,9 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 import "dotenv/config";
 
-if (!process.env.HASURA_GRAPHQL_ENDPOINT_CODEGEN) {
+if (!process.env.EXPRESS_HASURA_GRAPHQL_ENDPOINT_CODEGEN) {
   throw new Error(
-    "HASURA_GRAPHQL_ENDPOINT_CODEGEN environment variable is not set"
+    "EXPRESS_HASURA_GRAPHQL_ENDPOINT_CODEGEN environment variable is not set"
   );
 }
 
@@ -16,7 +16,7 @@ if (!process.env.HASURA_GRAPHQL_ADMIN_SECRET) {
 const config: CodegenConfig = {
   schema: [
     {
-      [process.env.HASURA_GRAPHQL_ENDPOINT_CODEGEN]: {
+      [process.env.EXPRESS_HASURA_GRAPHQL_ENDPOINT_CODEGEN]: {
         headers: {
           "x-hasura-admin-secret": process.env.HASURA_GRAPHQL_ADMIN_SECRET,
         },
@@ -33,6 +33,12 @@ const config: CodegenConfig = {
         namingConvention: {
           typeNames: "change-case-all#pascalCase",
           enumValues: "change-case-all#upperCase",
+        },
+        scalars: {
+          UUID: "string",
+          uuid: "string",
+          timestamp: "string",
+          timestamp_timestamptz: "string",
         },
       },
     },

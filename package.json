@@ -10,9 +10,14 @@
     "dev": "podman-compose up --build -d",
     "start": "podman-compose up -d",
     "stop": "podman-compose down",
-    "hasura:console": "cd packages/hasura && hasura console",
     "generate": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --verbose",
-    "generate:watch": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --watch --verbose"
+    "generate:watch": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --watch --verbose",
+    "hasura:console": "cd packages/hasura && hasura console",
+    "hasura:refresh": "cd packages/hasura && hasura metadata apply --envfile ../../.env && hasura migrate apply --envfile ../../.env && hasura metadata reload --envfile ../../.env && cd ../..",
+    "hasura:migrate": "cd packages/hasura && hasura migrate apply --envfile ../../.env && cd ../..",
+    "hasura:metadata": "cd packages/hasura && hasura metadata apply --envfile ../../.env && cd ../..",
+    "hasura:reload": "cd packages/hasura && hasura metadata reload --envfile ../../.env && cd ../..",
+    "packages:reset": "podman-compose down && podman volume rm access-mono_node_modules_volume -f && podman-compose up --build -d"
   },
   "license": "MIT"
 }

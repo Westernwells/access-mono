@@ -1,18 +1,50 @@
-type Mutation {
-  userSignUp(
-    signUpData: userSignUpInput!
-  ): userSignUpOutput!
+type Query {
+  requestSmsVerifCode(
+    requestSmsVerifCodeData: RequestSmsVerifCodeInput!
+  ): RequestSmsVerifCodeOutput!
 }
 
-input userSignUpInput {
+type Mutation {
+  userSignIn(
+    signInData: UserSignInInput!
+  ): UserSignInOutput!
+}
+
+type Mutation {
+  userSignUp(
+    signUpData: UserSignUpInput!
+  ): UserSignUpOutput!
+}
+
+input RequestSmsVerifCodeInput {
+  phone: String!
+}
+
+input UserSignInInput {
+  phone: String!
+  verificationCode: String!
+}
+
+input UserSignUpInput {
   buildingId: uuid!
   unitId: uuid!
   name: String!
   phone: String!
+  verificationCode: String!
   email: String
 }
 
-type userSignUpOutput {
+type RequestSmsVerifCodeOutput {
+  verificationStatus: String!
+}
+
+type UserSignInOutput {
+  userId: String!
   accessToken: String!
+}
+
+type UserSignUpOutput {
+  accessToken: String!
+  userId: uuid!
 }
 

@@ -1,12 +1,26 @@
 actions:
+  - name: requestSmsVerifCode
+    definition:
+      kind: ""
+      handler: '{{EXPRESS_API_URL}}/api/request-sms-verif-code'
+  - name: userSignIn
+    definition:
+      kind: synchronous
+      handler: '{{EXPRESS_API_URL}}/api/user-sign-in'
   - name: userSignUp
     definition:
       kind: synchronous
-      handler: '{{HASURA_API_URL}}/api/user-sign-up'
+      handler: '{{EXPRESS_API_URL}}/api/user-sign-up'
+    permissions:
+      - role: anonymous
 custom_types:
   enums: []
   input_objects:
-    - name: userSignUpInput
+    - name: RequestSmsVerifCodeInput
+    - name: UserSignInInput
+    - name: UserSignUpInput
   objects:
-    - name: userSignUpOutput
+    - name: RequestSmsVerifCodeOutput
+    - name: UserSignInOutput
+    - name: UserSignUpOutput
   scalars: []

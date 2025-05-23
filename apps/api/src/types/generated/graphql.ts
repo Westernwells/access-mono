@@ -15,8 +15,8 @@ export type Scalars = {
   Int: { input: number; output: number; }
   Float: { input: number; output: number; }
   jsonb: { input: any; output: any; }
-  timestamp: { input: any; output: any; }
-  uuid: { input: any; output: any; }
+  timestamp: { input: string; output: string; }
+  uuid: { input: string; output: string; }
 };
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
@@ -43,6 +43,15 @@ export type IntComparisonExp = {
   _lte?: InputMaybe<Scalars['Int']['input']>;
   _neq?: InputMaybe<Scalars['Int']['input']>;
   _nin?: InputMaybe<Array<Scalars['Int']['input']>>;
+};
+
+export type RequestSmsVerifCodeInput = {
+  phone: Scalars['String']['input'];
+};
+
+export type RequestSmsVerifCodeOutput = {
+  __typename?: 'RequestSmsVerifCodeOutput';
+  verificationStatus: Scalars['String']['output'];
 };
 
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
@@ -76,6 +85,32 @@ export type StringComparisonExp = {
   _regex?: InputMaybe<Scalars['String']['input']>;
   /** does the column match the given SQL regular expression */
   _similar?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type UserSignInInput = {
+  phone: Scalars['String']['input'];
+  verificationCode: Scalars['String']['input'];
+};
+
+export type UserSignInOutput = {
+  __typename?: 'UserSignInOutput';
+  accessToken: Scalars['String']['output'];
+  userId: Scalars['String']['output'];
+};
+
+export type UserSignUpInput = {
+  buildingId: Scalars['uuid']['input'];
+  email?: InputMaybe<Scalars['String']['input']>;
+  name: Scalars['String']['input'];
+  phone: Scalars['String']['input'];
+  unitId: Scalars['uuid']['input'];
+  verificationCode: Scalars['String']['input'];
+};
+
+export type UserSignUpOutput = {
+  __typename?: 'UserSignUpOutput';
+  accessToken: Scalars['String']['output'];
+  userId: Scalars['uuid']['output'];
 };
 
 /** columns and relationships of "announcements" */
@@ -1209,6 +1244,8 @@ export type MutationRoot = {
   update_users_by_pk?: Maybe<Users>;
   /** update multiples rows of table: "users" */
   update_users_many?: Maybe<Array<Maybe<UsersMutationResponse>>>;
+  userSignIn: UserSignInOutput;
+  userSignUp: UserSignUpOutput;
 };
 
 
@@ -1819,6 +1856,18 @@ export type MutationRootUpdateUsersByPkArgs = {
 /** mutation root */
 export type MutationRootUpdateUsersManyArgs = {
   updates: Array<UsersUpdates>;
+};
+
+
+/** mutation root */
+export type MutationRootUserSignInArgs = {
+  signInData: UserSignInInput;
+};
+
+
+/** mutation root */
+export type MutationRootUserSignUpArgs = {
+  signUpData: UserSignUpInput;
 };
 
 /** columns and relationships of "notification_types" */
@@ -2715,6 +2764,7 @@ export type QueryRoot = {
   one_time_access_code_status_types_aggregate: OneTimeAccessCodeStatusTypesAggregate;
   /** fetch data from the table: "one_time_access_code_status_types" using primary key columns */
   one_time_access_code_status_types_by_pk?: Maybe<OneTimeAccessCodeStatusTypes>;
+  requestSmsVerifCode: RequestSmsVerifCodeOutput;
   /** fetch data from the table: "roles" */
   roles: Array<Roles>;
   /** fetch aggregated fields from the table: "roles" */
@@ -2929,6 +2979,11 @@ export type QueryRootOneTimeAccessCodeStatusTypesAggregateArgs = {
 
 export type QueryRootOneTimeAccessCodeStatusTypesByPkArgs = {
   value: Scalars['String']['input'];
+};
+
+
+export type QueryRootRequestSmsVerifCodeArgs = {
+  requestSmsVerifCodeData: RequestSmsVerifCodeInput;
 };
 
 
@@ -4648,6 +4703,10 @@ export type UsersBoolExp = {
 
 /** unique or primary key constraints on table "users" */
 export enum UsersConstraint {
+  /** unique or primary key constraint on columns "email" */
+  USERS_EMAIL_KEY = 'users_email_key',
+  /** unique or primary key constraint on columns "phone" */
+  USERS_PHONE_KEY = 'users_phone_key',
   /** unique or primary key constraint on columns "id" */
   USERS_PKEY = 'users_pkey'
 }
@@ -4891,7 +4950,15 @@ export type InsertUserMutationVariables = Exact<{
 }>;
 
 
-export type InsertUserMutation = { __typename?: 'mutation_root', insert_users_one?: { __typename?: 'users', id: any, name: string, email?: string | null } | null };
+export type InsertUserMutation = { __typename?: 'mutation_root', insert_users_one?: { __typename?: 'users', id: string } | null };
+
+export type GetUserByPhoneQueryVariables = Exact<{
+  phone: Scalars['String']['input'];
+}>;
 
 
-export const InsertUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InsertUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"object"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"users_insert_input"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"insert_users_one"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"object"},"value":{"kind":"Variable","name":{"kind":"Name","value":"object"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"email"}}]}}]}}]} as unknown as DocumentNode<InsertUserMutation, InsertUserMutationVariables>;
+export type GetUserByPhoneQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: string }> };
+
+
+export const InsertUserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"InsertUser"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"object"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"users_insert_input"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"insert_users_one"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"object"},"value":{"kind":"Variable","name":{"kind":"Name","value":"object"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<InsertUserMutation, InsertUserMutationVariables>;
+export const GetUserByPhoneDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetUserByPhone"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"phone"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"users"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"phone"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"_eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"phone"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<GetUserByPhoneQuery, GetUserByPhoneQueryVariables>;

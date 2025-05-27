@@ -23,7 +23,7 @@ export async function createVerification({ to }: { to: string }) {
       .services(process.env.TWILIO_SMS_VERIF_SERVICE_SID!)
       .verifications.create({
         channel: "sms",
-        to: `+1${to}`, // TODO we should receive the country code from the frontend
+        to,
       });
 
     return { verificationStatus: verification.status };

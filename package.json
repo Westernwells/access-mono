@@ -12,17 +12,33 @@
     ]
   },
   "scripts": {
+    "native:start": "cd apps/native-app && yarn start",
+    "native:android": "cd apps/native-app && yarn android",
     "dev": "podman-compose up --build -d",
     "start": "podman-compose up -d",
     "stop": "podman-compose down",
-    "generate": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --verbose",
-    "generate:watch": "graphql-codegen --config apps/api/hasura-codegen.ts dotenv_config_path=.env --watch --verbose",
+    "generate:native": "graphql-codegen --config hasura-codegen.js dotenv_config_path=.env --project native --verbose",
+    "generate:api": "graphql-codegen --config hasura-codegen.js dotenv_config_path=.env --project api --verbose",
+    "generate:native:watch": "graphql-codegen --config hasura-codegen.js dotenv_config_path=.env --watch --project native --verbose",
+    "generate:api:watch": "graphql-codegen --config hasura-codegen.js dotenv_config_path=.env --watch --project api --verbose",
+    "generate": "yarn generate:api && yarn generate:native",
+    "generate:watch": "yarn generate:api:watch && yarn generate:native:watch",
     "hasura:console": "cd packages/hasura && hasura console",
     "hasura:refresh": "cd packages/hasura && hasura metadata apply --envfile ../../.env && hasura migrate apply --envfile ../../.env && hasura metadata reload --envfile ../../.env && cd ../..",
     "hasura:migrate": "cd packages/hasura && hasura migrate apply --envfile ../../.env && cd ../..",
     "hasura:metadata": "cd packages/hasura && hasura metadata apply --envfile ../../.env && cd ../..",
     "hasura:reload": "cd packages/hasura && hasura metadata reload --envfile ../../.env && cd ../..",
-    "packages:reset": "podman-compose down && podman volume rm access-mono_node_modules_volume -f && podman-compose up --build -d"
+    "packages:reset": "podman-compose down && podman volume rm access-mono_node_modules_volume -f && podman-compose up --build -d",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
+  },
+  "lint-staged": {
+    "apps/native-app/**/*.{js,ts,tsx}": [
+      "cd apps/native-app && eslint --fix",
+      "cd apps/native-app && prettier --write"
+    ]
   },
   "license": "MIT"
 }

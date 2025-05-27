@@ -29,7 +29,7 @@ export async function checkVerification({
       .services(process.env.TWILIO_SMS_VERIF_SERVICE_SID!)
       .verificationChecks.create({
         code,
-        to: `+1${to}`, // TODO we should receive the country code from the frontend
+        to,
       });
 
     if (!verificationCheck.valid) {

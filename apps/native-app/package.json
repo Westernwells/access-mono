@@ -11,10 +11,10 @@
     "format:fix": "prettier . --write",
     "start": "react-native start",
     "start:fresh": "react-native start --reset-cache",
-    "test": "jest",
-    "prepare": "husky install"
+    "test": "jest"
   },
   "dependencies": {
+    "@apollo/client": "^3.13.8",
     "@expo/html-elements": "0.4.2",
     "@gluestack-ui/accordion": "^1.0.14",
     "@gluestack-ui/actionsheet": "^0.2.53",
@@ -40,6 +40,8 @@
     "@react-navigation/native": "6.1.9",
     "@react-navigation/native-stack": "6.9.17",
     "clsx": "^2.1.1",
+    "graphql": "^16.11.0",
+    "graphql-ws": "^6.0.5",
     "i18next": "^25.1.2",
     "lucide-react": "^0.508.0",
     "lucide-react-native": "^0.503.0",
@@ -90,13 +92,9 @@
     "prettier": "2.8.8",
     "react-test-renderer": "19.0.0",
     "typescript": "5.0.4",
-    "typescript-eslint": "^8.32.1",
-    "husky": "^8.0.0"
+    "typescript-eslint": "^8.32.1"
   },
   "engines": {
     "node": ">=18"
-  },
-  "lint-staged": {
-  "*.{js,ts,tsx}": ["eslint --fix", "prettier --write"]
   }
 }

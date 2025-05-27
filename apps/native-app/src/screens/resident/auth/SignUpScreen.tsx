@@ -22,6 +22,8 @@ import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ResidentStackParamList} from '@/navigation/resident/ResidentStacks';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
+import {useQuery} from '@apollo/client';
+import {REQUEST_SMS_VERIF_CODE} from '@/lib/graphql/queries/requestSmsVerifCode';
 
 type SignUpScreenNavigationProp = NativeStackNavigationProp<
   ResidentStackParamList,
@@ -39,6 +41,16 @@ type SignUpFormData = {
 const SignUpScreen = () => {
   const navigation = useNavigation<SignUpScreenNavigationProp>();
   const {t} = useTranslation();
+
+  const {data, loading, error} = useQuery(REQUEST_SMS_VERIF_CODE, {
+    variables: {
+      requestSmsVerifCodeData: {
+        phone: '+14508227035', // TODO make sure to include country code / store it in the db
+      },
+    },
+  });
+
+  console.log(data);
 
   // Define the validation schema with Zod
   const signUpSchema = z

@@ -14,7 +14,7 @@ export async function userSignUpController(
   >,
   res: Response<UserSignUpOutput | HasuraActionErrorResponse>
 ) {
-  const { buildingId, email, name, phone, unitId, verificationCode } =
+  const { email, name, phone, unitId, verificationCode } =
     req.body.input.signUpData;
 
   try {
@@ -26,12 +26,17 @@ export async function userSignUpController(
     const { userId } = await createUser({
       variables: {
         object: {
-          building_id: buildingId,
           email,
           name,
           role: RolesEnum.RESIDENT,
           phone,
-          unit_id: unitId,
+          user_units: {
+            data: [
+              {
+                unit_id: unitId,
+              },
+            ],
+          },
         },
       },
     });

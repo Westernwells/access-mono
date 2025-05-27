@@ -1,8 +1,10 @@
 import React from 'react';
-import {Navigation} from './src/navigation/Navigation';
-import {GluestackUIProvider} from './src/components/ui/gluestack-ui-provider';
+import {Navigation} from '@/navigation/Navigation';
+import {GluestackUIProvider} from '@/components/ui/gluestack-ui-provider';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {useColorScheme, StatusBar} from 'react-native';
+import {ApolloWrapper} from '@/contexts/ApolloWrapper';
+import {UserProvider} from '@/contexts/UserContext';
 import './global.css';
 
 function App(): React.JSX.Element {
@@ -16,7 +18,11 @@ function App(): React.JSX.Element {
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
           backgroundColor={isDarkMode ? '#000' : '#fff'}
         />
-        <Navigation />
+        <UserProvider>
+          <ApolloWrapper>
+            <Navigation />
+          </ApolloWrapper>
+        </UserProvider>
       </SafeAreaProvider>
     </GluestackUIProvider>
   );

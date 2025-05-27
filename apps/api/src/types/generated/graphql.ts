@@ -99,7 +99,6 @@ export type UserSignInOutput = {
 };
 
 export type UserSignUpInput = {
-  buildingId: Scalars['uuid']['input'];
   email?: InputMaybe<Scalars['String']['input']>;
   name: Scalars['String']['input'];
   phone: Scalars['String']['input'];

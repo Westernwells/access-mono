@@ -2,10 +2,15 @@
   "name": "access-mono",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
+      "@access-mono/native-app/**"
+    ]
+  },
   "scripts": {
     "dev": "podman-compose up --build -d",
     "start": "podman-compose up -d",

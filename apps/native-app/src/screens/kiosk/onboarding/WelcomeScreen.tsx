@@ -9,7 +9,7 @@ import {AccessLogo} from '@/components/icons/AccessLogo';
 import {Icon} from '@/components/ui/icon';
 import {KioskStackParamList} from '@/navigation/kiosk/KioskStacks';
 import {useTranslation} from 'react-i18next';
-
+// test merging access-app into access-mono
 type WelcomeScreenNavigationProp = NativeStackNavigationProp<
   KioskStackParamList,
   'KioskOnboarding'

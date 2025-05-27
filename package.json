@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "workspaces": {
-  "packages": ["apps/*", "packages/*"],
-  "nohoist": [
+    "packages": [
+      "apps/*",
+      "packages/*"
+    ],
+    "nohoist": [
       "@access-mono/native-app/**"
     ]
-},
+  },
   "scripts": {
     "dev": "podman-compose up --build -d",
     "start": "podman-compose up -d",

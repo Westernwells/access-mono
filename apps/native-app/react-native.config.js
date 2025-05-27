@@ -6,32 +6,32 @@ module.exports = {
   dependencies: {
     'react-native-date-picker': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
     'react-native-localize': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
     'react-native-reanimated': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
     'react-native-safe-area-context': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
     'react-native-screens': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
     'react-native-svg': {
       platforms: {
-        android: null,
+        android: {},
       },
     },
   },

@@ -2,6 +2,9 @@ table:
   name: one_time_access_code
   schema: public
 object_relationships:
-  - name: user
+  - name: access_log
     using:
-      foreign_key_constraint_on: user_id
+      foreign_key_constraint_on: access_log_id
+  - name: unit
+    using:
+      foreign_key_constraint_on: unit_id

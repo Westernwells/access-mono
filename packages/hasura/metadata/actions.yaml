@@ -3,10 +3,14 @@ actions:
     definition:
       kind: ""
       handler: '{{EXPRESS_API_URL}}/api/request-sms-verif-code'
+    permissions:
+      - role: anonymous
   - name: userSignIn
     definition:
       kind: synchronous
       handler: '{{EXPRESS_API_URL}}/api/user-sign-in'
+    permissions:
+      - role: anonymous
   - name: userSignUp
     definition:
       kind: synchronous

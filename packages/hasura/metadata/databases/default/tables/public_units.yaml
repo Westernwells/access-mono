@@ -6,10 +6,24 @@ object_relationships:
     using:
       foreign_key_constraint_on: building_id
 array_relationships:
-  - name: users
+  - name: access_logs
     using:
       foreign_key_constraint_on:
         column: unit_id
         table:
-          name: users
+          name: access_logs
+          schema: public
+  - name: one_time_access_codes
+    using:
+      foreign_key_constraint_on:
+        column: unit_id
+        table:
+          name: one_time_access_code
+          schema: public
+  - name: user_units
+    using:
+      foreign_key_constraint_on:
+        column: unit_id
+        table:
+          name: user_units
           schema: public

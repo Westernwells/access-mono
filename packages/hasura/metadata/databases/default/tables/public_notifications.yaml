@@ -2,6 +2,6 @@ table:
   name: notifications
   schema: public
 object_relationships:
-  - name: user
+  - name: building
     using:
-      foreign_key_constraint_on: user_id
+      foreign_key_constraint_on: building_id

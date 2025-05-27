@@ -113,6 +113,246 @@ export type UserSignUpOutput = {
   userId: Scalars['uuid']['output'];
 };
 
+/** columns and relationships of "access_logs" */
+export type AccessLogs = {
+  __typename?: 'access_logs';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id: Scalars['uuid']['output'];
+  status?: Maybe<CallStatusEnum>;
+  type: CallTypesEnum;
+  unit_id: Scalars['uuid']['output'];
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  visitor_image_uri?: Maybe<Scalars['String']['output']>;
+};
+
+/** aggregated selection of "access_logs" */
+export type AccessLogsAggregate = {
+  __typename?: 'access_logs_aggregate';
+  aggregate?: Maybe<AccessLogsAggregateFields>;
+  nodes: Array<AccessLogs>;
+};
+
+export type AccessLogsAggregateBoolExp = {
+  count?: InputMaybe<AccessLogsAggregateBoolExpCount>;
+};
+
+export type AccessLogsAggregateBoolExpCount = {
+  arguments?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<AccessLogsBoolExp>;
+  predicate: IntComparisonExp;
+};
+
+/** aggregate fields of "access_logs" */
+export type AccessLogsAggregateFields = {
+  __typename?: 'access_logs_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<AccessLogsMaxFields>;
+  min?: Maybe<AccessLogsMinFields>;
+};
+
+
+/** aggregate fields of "access_logs" */
+export type AccessLogsAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "access_logs" */
+export type AccessLogsAggregateOrderBy = {
+  count?: InputMaybe<OrderBy>;
+  max?: InputMaybe<AccessLogsMaxOrderBy>;
+  min?: InputMaybe<AccessLogsMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "access_logs" */
+export type AccessLogsArrRelInsertInput = {
+  data: Array<AccessLogsInsertInput>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<AccessLogsOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "access_logs". All fields are combined with a logical 'AND'. */
+export type AccessLogsBoolExp = {
+  _and?: InputMaybe<Array<AccessLogsBoolExp>>;
+  _not?: InputMaybe<AccessLogsBoolExp>;
+  _or?: InputMaybe<Array<AccessLogsBoolExp>>;
+  created_at?: InputMaybe<TimestampComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
+  status?: InputMaybe<CallStatusEnumComparisonExp>;
+  type?: InputMaybe<CallTypesEnumComparisonExp>;
+  unit_id?: InputMaybe<UuidComparisonExp>;
+  updated_at?: InputMaybe<TimestampComparisonExp>;
+  visitor_image_uri?: InputMaybe<StringComparisonExp>;
+};
+
+/** unique or primary key constraints on table "access_logs" */
+export enum AccessLogsConstraint {
+  /** unique or primary key constraint on columns "id" */
+  ACCESS_LOGS_PKEY = 'access_logs_pkey'
+}
+
+/** input type for inserting data into table "access_logs" */
+export type AccessLogsInsertInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  status?: InputMaybe<CallStatusEnum>;
+  type?: InputMaybe<CallTypesEnum>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  visitor_image_uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** aggregate max on columns */
+export type AccessLogsMaxFields = {
+  __typename?: 'access_logs_max_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  visitor_image_uri?: Maybe<Scalars['String']['output']>;
+};
+
+/** order by max() on columns of table "access_logs" */
+export type AccessLogsMaxOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  visitor_image_uri?: InputMaybe<OrderBy>;
+};
+
+/** aggregate min on columns */
+export type AccessLogsMinFields = {
+  __typename?: 'access_logs_min_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  visitor_image_uri?: Maybe<Scalars['String']['output']>;
+};
+
+/** order by min() on columns of table "access_logs" */
+export type AccessLogsMinOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  visitor_image_uri?: InputMaybe<OrderBy>;
+};
+
+/** response of any mutation on the table "access_logs" */
+export type AccessLogsMutationResponse = {
+  __typename?: 'access_logs_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<AccessLogs>;
+};
+
+/** input type for inserting object relation for remote table "access_logs" */
+export type AccessLogsObjRelInsertInput = {
+  data: AccessLogsInsertInput;
+  /** upsert condition */
+  on_conflict?: InputMaybe<AccessLogsOnConflict>;
+};
+
+/** on_conflict condition type for table "access_logs" */
+export type AccessLogsOnConflict = {
+  constraint: AccessLogsConstraint;
+  update_columns?: Array<AccessLogsUpdateColumn>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+/** Ordering options when selecting data from "access_logs". */
+export type AccessLogsOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  status?: InputMaybe<OrderBy>;
+  type?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  visitor_image_uri?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: access_logs */
+export type AccessLogsPkColumnsInput = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "access_logs" */
+export enum AccessLogsSelectColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  STATUS = 'status',
+  /** column name */
+  TYPE = 'type',
+  /** column name */
+  UNIT_ID = 'unit_id',
+  /** column name */
+  UPDATED_AT = 'updated_at',
+  /** column name */
+  VISITOR_IMAGE_URI = 'visitor_image_uri'
+}
+
+/** input type for updating data in table "access_logs" */
+export type AccessLogsSetInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  status?: InputMaybe<CallStatusEnum>;
+  type?: InputMaybe<CallTypesEnum>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  visitor_image_uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "access_logs" */
+export type AccessLogsStreamCursorInput = {
+  /** Stream column input with initial value */
+  initial_value: AccessLogsStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type AccessLogsStreamCursorValueInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  status?: InputMaybe<CallStatusEnum>;
+  type?: InputMaybe<CallTypesEnum>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  visitor_image_uri?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "access_logs" */
+export enum AccessLogsUpdateColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  STATUS = 'status',
+  /** column name */
+  TYPE = 'type',
+  /** column name */
+  UNIT_ID = 'unit_id',
+  /** column name */
+  UPDATED_AT = 'updated_at',
+  /** column name */
+  VISITOR_IMAGE_URI = 'visitor_image_uri'
+}
+
+export type AccessLogsUpdates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<AccessLogsSetInput>;
+  /** filter the rows which have to be updated */
+  where: AccessLogsBoolExp;
+};
+
 /** columns and relationships of "announcements" */
 export type Announcements = {
   __typename?: 'announcements';
@@ -405,17 +645,24 @@ export type Buildings = {
   /** An aggregate relationship */
   announcements_aggregate: AnnouncementsAggregate;
   created_at?: Maybe<Scalars['timestamp']['output']>;
+  /** An array relationship */
+  devices: Array<Devices>;
+  /** An aggregate relationship */
+  devices_aggregate: DevicesAggregate;
   id: Scalars['uuid']['output'];
   name: Scalars['String']['output'];
+  /** An array relationship */
+  notifications: Array<Notifications>;
+  /** An aggregate relationship */
+  notifications_aggregate: NotificationsAggregate;
+  /** An object relationship */
+  organization: Organizations;
+  organization_id: Scalars['uuid']['output'];
   /** An array relationship */
   units: Array<Units>;
   /** An aggregate relationship */
   units_aggregate: UnitsAggregate;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  /** An array relationship */
-  users: Array<Users>;
-  /** An aggregate relationship */
-  users_aggregate: UsersAggregate;
 };
 
 
@@ -440,6 +687,46 @@ export type BuildingsAnnouncementsAggregateArgs = {
 
 
 /** columns and relationships of "buildings" */
+export type BuildingsDevicesArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+/** columns and relationships of "buildings" */
+export type BuildingsDevicesAggregateArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+/** columns and relationships of "buildings" */
+export type BuildingsNotificationsArgs = {
+  distinct_on?: InputMaybe<Array<NotificationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<NotificationsOrderBy>>;
+  where?: InputMaybe<NotificationsBoolExp>;
+};
+
+
+/** columns and relationships of "buildings" */
+export type BuildingsNotificationsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<NotificationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<NotificationsOrderBy>>;
+  where?: InputMaybe<NotificationsBoolExp>;
+};
+
+
+/** columns and relationships of "buildings" */
 export type BuildingsUnitsArgs = {
   distinct_on?: InputMaybe<Array<UnitsSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -458,31 +745,22 @@ export type BuildingsUnitsAggregateArgs = {
   where?: InputMaybe<UnitsBoolExp>;
 };
 
-
-/** columns and relationships of "buildings" */
-export type BuildingsUsersArgs = {
-  distinct_on?: InputMaybe<Array<UsersSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<UsersOrderBy>>;
-  where?: InputMaybe<UsersBoolExp>;
-};
-
-
-/** columns and relationships of "buildings" */
-export type BuildingsUsersAggregateArgs = {
-  distinct_on?: InputMaybe<Array<UsersSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<UsersOrderBy>>;
-  where?: InputMaybe<UsersBoolExp>;
-};
-
 /** aggregated selection of "buildings" */
 export type BuildingsAggregate = {
   __typename?: 'buildings_aggregate';
   aggregate?: Maybe<BuildingsAggregateFields>;
   nodes: Array<Buildings>;
+};
+
+export type BuildingsAggregateBoolExp = {
+  count?: InputMaybe<BuildingsAggregateBoolExpCount>;
+};
+
+export type BuildingsAggregateBoolExpCount = {
+  arguments?: InputMaybe<Array<BuildingsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<BuildingsBoolExp>;
+  predicate: IntComparisonExp;
 };
 
 /** aggregate fields of "buildings" */
@@ -500,6 +778,20 @@ export type BuildingsAggregateFieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
+/** order by aggregate values of table "buildings" */
+export type BuildingsAggregateOrderBy = {
+  count?: InputMaybe<OrderBy>;
+  max?: InputMaybe<BuildingsMaxOrderBy>;
+  min?: InputMaybe<BuildingsMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "buildings" */
+export type BuildingsArrRelInsertInput = {
+  data: Array<BuildingsInsertInput>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<BuildingsOnConflict>;
+};
+
 /** Boolean expression to filter rows from the table "buildings". All fields are combined with a logical 'AND'. */
 export type BuildingsBoolExp = {
   _and?: InputMaybe<Array<BuildingsBoolExp>>;
@@ -509,13 +801,17 @@ export type BuildingsBoolExp = {
   announcements?: InputMaybe<AnnouncementsBoolExp>;
   announcements_aggregate?: InputMaybe<AnnouncementsAggregateBoolExp>;
   created_at?: InputMaybe<TimestampComparisonExp>;
+  devices?: InputMaybe<DevicesBoolExp>;
+  devices_aggregate?: InputMaybe<DevicesAggregateBoolExp>;
   id?: InputMaybe<UuidComparisonExp>;
   name?: InputMaybe<StringComparisonExp>;
+  notifications?: InputMaybe<NotificationsBoolExp>;
+  notifications_aggregate?: InputMaybe<NotificationsAggregateBoolExp>;
+  organization?: InputMaybe<OrganizationsBoolExp>;
+  organization_id?: InputMaybe<UuidComparisonExp>;
   units?: InputMaybe<UnitsBoolExp>;
   units_aggregate?: InputMaybe<UnitsAggregateBoolExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
-  users?: InputMaybe<UsersBoolExp>;
-  users_aggregate?: InputMaybe<UsersAggregateBoolExp>;
 };
 
 /** unique or primary key constraints on table "buildings" */
@@ -529,11 +825,14 @@ export type BuildingsInsertInput = {
   address?: InputMaybe<Scalars['String']['input']>;
   announcements?: InputMaybe<AnnouncementsArrRelInsertInput>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  devices?: InputMaybe<DevicesArrRelInsertInput>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  notifications?: InputMaybe<NotificationsArrRelInsertInput>;
+  organization?: InputMaybe<OrganizationsObjRelInsertInput>;
+  organization_id?: InputMaybe<Scalars['uuid']['input']>;
   units?: InputMaybe<UnitsArrRelInsertInput>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  users?: InputMaybe<UsersArrRelInsertInput>;
 };
 
 /** aggregate max on columns */
@@ -543,7 +842,18 @@ export type BuildingsMaxFields = {
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  organization_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by max() on columns of table "buildings" */
+export type BuildingsMaxOrderBy = {
+  address?: InputMaybe<OrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  organization_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
 };
 
 /** aggregate min on columns */
@@ -553,7 +863,18 @@ export type BuildingsMinFields = {
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
+  organization_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by min() on columns of table "buildings" */
+export type BuildingsMinOrderBy = {
+  address?: InputMaybe<OrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  organization_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
 };
 
 /** response of any mutation on the table "buildings" */
@@ -584,11 +905,14 @@ export type BuildingsOrderBy = {
   address?: InputMaybe<OrderBy>;
   announcements_aggregate?: InputMaybe<AnnouncementsAggregateOrderBy>;
   created_at?: InputMaybe<OrderBy>;
+  devices_aggregate?: InputMaybe<DevicesAggregateOrderBy>;
   id?: InputMaybe<OrderBy>;
   name?: InputMaybe<OrderBy>;
+  notifications_aggregate?: InputMaybe<NotificationsAggregateOrderBy>;
+  organization?: InputMaybe<OrganizationsOrderBy>;
+  organization_id?: InputMaybe<OrderBy>;
   units_aggregate?: InputMaybe<UnitsAggregateOrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  users_aggregate?: InputMaybe<UsersAggregateOrderBy>;
 };
 
 /** primary key columns input for table: buildings */
@@ -607,6 +931,8 @@ export enum BuildingsSelectColumn {
   /** column name */
   NAME = 'name',
   /** column name */
+  ORGANIZATION_ID = 'organization_id',
+  /** column name */
   UPDATED_AT = 'updated_at'
 }
 
@@ -616,6 +942,7 @@ export type BuildingsSetInput = {
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  organization_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
@@ -633,6 +960,7 @@ export type BuildingsStreamCursorValueInput = {
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
+  organization_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
@@ -647,6 +975,8 @@ export enum BuildingsUpdateColumn {
   /** column name */
   NAME = 'name',
   /** column name */
+  ORGANIZATION_ID = 'organization_id',
+  /** column name */
   UPDATED_AT = 'updated_at'
 }
 
@@ -657,218 +987,156 @@ export type BuildingsUpdates = {
   where: BuildingsBoolExp;
 };
 
-/** columns and relationships of "call_logs" */
-export type CallLogs = {
-  __typename?: 'call_logs';
-  created_at?: Maybe<Scalars['timestamp']['output']>;
-  id: Scalars['uuid']['output'];
-  type: CallTypesEnum;
-  updated_at?: Maybe<Scalars['timestamp']['output']>;
-  /** An object relationship */
-  user: Users;
-  user_id: Scalars['uuid']['output'];
+/** columns and relationships of "call_status" */
+export type CallStatus = {
+  __typename?: 'call_status';
+  comment: Scalars['String']['output'];
+  value: Scalars['String']['output'];
 };
 
-/** aggregated selection of "call_logs" */
-export type CallLogsAggregate = {
-  __typename?: 'call_logs_aggregate';
-  aggregate?: Maybe<CallLogsAggregateFields>;
-  nodes: Array<CallLogs>;
+/** aggregated selection of "call_status" */
+export type CallStatusAggregate = {
+  __typename?: 'call_status_aggregate';
+  aggregate?: Maybe<CallStatusAggregateFields>;
+  nodes: Array<CallStatus>;
 };
 
-export type CallLogsAggregateBoolExp = {
-  count?: InputMaybe<CallLogsAggregateBoolExpCount>;
-};
-
-export type CallLogsAggregateBoolExpCount = {
-  arguments?: InputMaybe<Array<CallLogsSelectColumn>>;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-  filter?: InputMaybe<CallLogsBoolExp>;
-  predicate: IntComparisonExp;
-};
-
-/** aggregate fields of "call_logs" */
-export type CallLogsAggregateFields = {
-  __typename?: 'call_logs_aggregate_fields';
+/** aggregate fields of "call_status" */
+export type CallStatusAggregateFields = {
+  __typename?: 'call_status_aggregate_fields';
   count: Scalars['Int']['output'];
-  max?: Maybe<CallLogsMaxFields>;
-  min?: Maybe<CallLogsMinFields>;
+  max?: Maybe<CallStatusMaxFields>;
+  min?: Maybe<CallStatusMinFields>;
 };
 
 
-/** aggregate fields of "call_logs" */
-export type CallLogsAggregateFieldsCountArgs = {
-  columns?: InputMaybe<Array<CallLogsSelectColumn>>;
+/** aggregate fields of "call_status" */
+export type CallStatusAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<CallStatusSelectColumn>>;
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** order by aggregate values of table "call_logs" */
-export type CallLogsAggregateOrderBy = {
-  count?: InputMaybe<OrderBy>;
-  max?: InputMaybe<CallLogsMaxOrderBy>;
-  min?: InputMaybe<CallLogsMinOrderBy>;
+/** Boolean expression to filter rows from the table "call_status". All fields are combined with a logical 'AND'. */
+export type CallStatusBoolExp = {
+  _and?: InputMaybe<Array<CallStatusBoolExp>>;
+  _not?: InputMaybe<CallStatusBoolExp>;
+  _or?: InputMaybe<Array<CallStatusBoolExp>>;
+  comment?: InputMaybe<StringComparisonExp>;
+  value?: InputMaybe<StringComparisonExp>;
 };
 
-/** input type for inserting array relation for remote table "call_logs" */
-export type CallLogsArrRelInsertInput = {
-  data: Array<CallLogsInsertInput>;
-  /** upsert condition */
-  on_conflict?: InputMaybe<CallLogsOnConflict>;
-};
-
-/** Boolean expression to filter rows from the table "call_logs". All fields are combined with a logical 'AND'. */
-export type CallLogsBoolExp = {
-  _and?: InputMaybe<Array<CallLogsBoolExp>>;
-  _not?: InputMaybe<CallLogsBoolExp>;
-  _or?: InputMaybe<Array<CallLogsBoolExp>>;
-  created_at?: InputMaybe<TimestampComparisonExp>;
-  id?: InputMaybe<UuidComparisonExp>;
-  type?: InputMaybe<CallTypesEnumComparisonExp>;
-  updated_at?: InputMaybe<TimestampComparisonExp>;
-  user?: InputMaybe<UsersBoolExp>;
-  user_id?: InputMaybe<UuidComparisonExp>;
-};
-
-/** unique or primary key constraints on table "call_logs" */
-export enum CallLogsConstraint {
-  /** unique or primary key constraint on columns "id" */
-  CALL_LOGS_PKEY = 'call_logs_pkey'
+/** unique or primary key constraints on table "call_status" */
+export enum CallStatusConstraint {
+  /** unique or primary key constraint on columns "value" */
+  CALL_STATUS_PKEY = 'call_status_pkey'
 }
 
-/** input type for inserting data into table "call_logs" */
-export type CallLogsInsertInput = {
-  created_at?: InputMaybe<Scalars['timestamp']['input']>;
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  type?: InputMaybe<CallTypesEnum>;
-  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user?: InputMaybe<UsersObjRelInsertInput>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
+export enum CallStatusEnum {
+  /** A call that was answered */
+  ANSWERED = 'answered',
+  /** A call that was not answered */
+  MISSED = 'missed',
+  /** A call that resulted in door unlock */
+  UNLOCKED = 'unlocked'
+}
+
+/** Boolean expression to compare columns of type "call_status_enum". All fields are combined with logical 'AND'. */
+export type CallStatusEnumComparisonExp = {
+  _eq?: InputMaybe<CallStatusEnum>;
+  _in?: InputMaybe<Array<CallStatusEnum>>;
+  _is_null?: InputMaybe<Scalars['Boolean']['input']>;
+  _neq?: InputMaybe<CallStatusEnum>;
+  _nin?: InputMaybe<Array<CallStatusEnum>>;
+};
+
+/** input type for inserting data into table "call_status" */
+export type CallStatusInsertInput = {
+  comment?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
-export type CallLogsMaxFields = {
-  __typename?: 'call_logs_max_fields';
-  created_at?: Maybe<Scalars['timestamp']['output']>;
-  id?: Maybe<Scalars['uuid']['output']>;
-  updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
-};
-
-/** order by max() on columns of table "call_logs" */
-export type CallLogsMaxOrderBy = {
-  created_at?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
+export type CallStatusMaxFields = {
+  __typename?: 'call_status_max_fields';
+  comment?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregate min on columns */
-export type CallLogsMinFields = {
-  __typename?: 'call_logs_min_fields';
-  created_at?: Maybe<Scalars['timestamp']['output']>;
-  id?: Maybe<Scalars['uuid']['output']>;
-  updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
+export type CallStatusMinFields = {
+  __typename?: 'call_status_min_fields';
+  comment?: Maybe<Scalars['String']['output']>;
+  value?: Maybe<Scalars['String']['output']>;
 };
 
-/** order by min() on columns of table "call_logs" */
-export type CallLogsMinOrderBy = {
-  created_at?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
-};
-
-/** response of any mutation on the table "call_logs" */
-export type CallLogsMutationResponse = {
-  __typename?: 'call_logs_mutation_response';
+/** response of any mutation on the table "call_status" */
+export type CallStatusMutationResponse = {
+  __typename?: 'call_status_mutation_response';
   /** number of rows affected by the mutation */
   affected_rows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
-  returning: Array<CallLogs>;
+  returning: Array<CallStatus>;
 };
 
-/** on_conflict condition type for table "call_logs" */
-export type CallLogsOnConflict = {
-  constraint: CallLogsConstraint;
-  update_columns?: Array<CallLogsUpdateColumn>;
-  where?: InputMaybe<CallLogsBoolExp>;
+/** on_conflict condition type for table "call_status" */
+export type CallStatusOnConflict = {
+  constraint: CallStatusConstraint;
+  update_columns?: Array<CallStatusUpdateColumn>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
-/** Ordering options when selecting data from "call_logs". */
-export type CallLogsOrderBy = {
-  created_at?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  type?: InputMaybe<OrderBy>;
-  updated_at?: InputMaybe<OrderBy>;
-  user?: InputMaybe<UsersOrderBy>;
-  user_id?: InputMaybe<OrderBy>;
+/** Ordering options when selecting data from "call_status". */
+export type CallStatusOrderBy = {
+  comment?: InputMaybe<OrderBy>;
+  value?: InputMaybe<OrderBy>;
 };
 
-/** primary key columns input for table: call_logs */
-export type CallLogsPkColumnsInput = {
-  id: Scalars['uuid']['input'];
+/** primary key columns input for table: call_status */
+export type CallStatusPkColumnsInput = {
+  value: Scalars['String']['input'];
 };
 
-/** select columns of table "call_logs" */
-export enum CallLogsSelectColumn {
+/** select columns of table "call_status" */
+export enum CallStatusSelectColumn {
   /** column name */
-  CREATED_AT = 'created_at',
+  COMMENT = 'comment',
   /** column name */
-  ID = 'id',
-  /** column name */
-  TYPE = 'type',
-  /** column name */
-  UPDATED_AT = 'updated_at',
-  /** column name */
-  USER_ID = 'user_id'
+  VALUE = 'value'
 }
 
-/** input type for updating data in table "call_logs" */
-export type CallLogsSetInput = {
-  created_at?: InputMaybe<Scalars['timestamp']['input']>;
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  type?: InputMaybe<CallTypesEnum>;
-  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
+/** input type for updating data in table "call_status" */
+export type CallStatusSetInput = {
+  comment?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** Streaming cursor of the table "call_logs" */
-export type CallLogsStreamCursorInput = {
+/** Streaming cursor of the table "call_status" */
+export type CallStatusStreamCursorInput = {
   /** Stream column input with initial value */
-  initial_value: CallLogsStreamCursorValueInput;
+  initial_value: CallStatusStreamCursorValueInput;
   /** cursor ordering */
   ordering?: InputMaybe<CursorOrdering>;
 };
 
 /** Initial value of the column from where the streaming should start */
-export type CallLogsStreamCursorValueInput = {
-  created_at?: InputMaybe<Scalars['timestamp']['input']>;
-  id?: InputMaybe<Scalars['uuid']['input']>;
-  type?: InputMaybe<CallTypesEnum>;
-  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
+export type CallStatusStreamCursorValueInput = {
+  comment?: InputMaybe<Scalars['String']['input']>;
+  value?: InputMaybe<Scalars['String']['input']>;
 };
 
-/** update columns of table "call_logs" */
-export enum CallLogsUpdateColumn {
+/** update columns of table "call_status" */
+export enum CallStatusUpdateColumn {
   /** column name */
-  CREATED_AT = 'created_at',
+  COMMENT = 'comment',
   /** column name */
-  ID = 'id',
-  /** column name */
-  TYPE = 'type',
-  /** column name */
-  UPDATED_AT = 'updated_at',
-  /** column name */
-  USER_ID = 'user_id'
+  VALUE = 'value'
 }
 
-export type CallLogsUpdates = {
+export type CallStatusUpdates = {
   /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<CallLogsSetInput>;
+  _set?: InputMaybe<CallStatusSetInput>;
   /** filter the rows which have to be updated */
-  where: CallLogsBoolExp;
+  where: CallStatusBoolExp;
 };
 
 /** columns and relationships of "call_types" */
@@ -916,12 +1184,10 @@ export enum CallTypesConstraint {
 }
 
 export enum CallTypesEnum {
-  /** A call that was answered */
-  ANSWERED = 'answered',
-  /** A call that was not answered */
-  MISSED = 'missed',
-  /** A call that resulted in door unlock */
-  UNLOCKED = 'unlocked'
+  /** Access via one-time code */
+  ACCESS_CODE = 'access_code',
+  /** Access via intercom call */
+  CALL = 'call'
 }
 
 /** Boolean expression to compare columns of type "call_types_enum". All fields are combined with logical 'AND'. */
@@ -1031,6 +1297,224 @@ export enum CursorOrdering {
   DESC = 'DESC'
 }
 
+/** columns and relationships of "devices" */
+export type Devices = {
+  __typename?: 'devices';
+  /** An object relationship */
+  building: Buildings;
+  building_id: Scalars['uuid']['output'];
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id: Scalars['uuid']['output'];
+  name: Scalars['String']['output'];
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** aggregated selection of "devices" */
+export type DevicesAggregate = {
+  __typename?: 'devices_aggregate';
+  aggregate?: Maybe<DevicesAggregateFields>;
+  nodes: Array<Devices>;
+};
+
+export type DevicesAggregateBoolExp = {
+  count?: InputMaybe<DevicesAggregateBoolExpCount>;
+};
+
+export type DevicesAggregateBoolExpCount = {
+  arguments?: InputMaybe<Array<DevicesSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<DevicesBoolExp>;
+  predicate: IntComparisonExp;
+};
+
+/** aggregate fields of "devices" */
+export type DevicesAggregateFields = {
+  __typename?: 'devices_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<DevicesMaxFields>;
+  min?: Maybe<DevicesMinFields>;
+};
+
+
+/** aggregate fields of "devices" */
+export type DevicesAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<DevicesSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "devices" */
+export type DevicesAggregateOrderBy = {
+  count?: InputMaybe<OrderBy>;
+  max?: InputMaybe<DevicesMaxOrderBy>;
+  min?: InputMaybe<DevicesMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "devices" */
+export type DevicesArrRelInsertInput = {
+  data: Array<DevicesInsertInput>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<DevicesOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "devices". All fields are combined with a logical 'AND'. */
+export type DevicesBoolExp = {
+  _and?: InputMaybe<Array<DevicesBoolExp>>;
+  _not?: InputMaybe<DevicesBoolExp>;
+  _or?: InputMaybe<Array<DevicesBoolExp>>;
+  building?: InputMaybe<BuildingsBoolExp>;
+  building_id?: InputMaybe<UuidComparisonExp>;
+  created_at?: InputMaybe<TimestampComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
+  name?: InputMaybe<StringComparisonExp>;
+  updated_at?: InputMaybe<TimestampComparisonExp>;
+};
+
+/** unique or primary key constraints on table "devices" */
+export enum DevicesConstraint {
+  /** unique or primary key constraint on columns "id" */
+  DEVICES_PKEY = 'devices_pkey'
+}
+
+/** input type for inserting data into table "devices" */
+export type DevicesInsertInput = {
+  building?: InputMaybe<BuildingsObjRelInsertInput>;
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** aggregate max on columns */
+export type DevicesMaxFields = {
+  __typename?: 'devices_max_fields';
+  building_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by max() on columns of table "devices" */
+export type DevicesMaxOrderBy = {
+  building_id?: InputMaybe<OrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+};
+
+/** aggregate min on columns */
+export type DevicesMinFields = {
+  __typename?: 'devices_min_fields';
+  building_id?: Maybe<Scalars['uuid']['output']>;
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** order by min() on columns of table "devices" */
+export type DevicesMinOrderBy = {
+  building_id?: InputMaybe<OrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+};
+
+/** response of any mutation on the table "devices" */
+export type DevicesMutationResponse = {
+  __typename?: 'devices_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Devices>;
+};
+
+/** on_conflict condition type for table "devices" */
+export type DevicesOnConflict = {
+  constraint: DevicesConstraint;
+  update_columns?: Array<DevicesUpdateColumn>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+/** Ordering options when selecting data from "devices". */
+export type DevicesOrderBy = {
+  building?: InputMaybe<BuildingsOrderBy>;
+  building_id?: InputMaybe<OrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: devices */
+export type DevicesPkColumnsInput = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "devices" */
+export enum DevicesSelectColumn {
+  /** column name */
+  BUILDING_ID = 'building_id',
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  NAME = 'name',
+  /** column name */
+  UPDATED_AT = 'updated_at'
+}
+
+/** input type for updating data in table "devices" */
+export type DevicesSetInput = {
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** Streaming cursor of the table "devices" */
+export type DevicesStreamCursorInput = {
+  /** Stream column input with initial value */
+  initial_value: DevicesStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type DevicesStreamCursorValueInput = {
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** update columns of table "devices" */
+export enum DevicesUpdateColumn {
+  /** column name */
+  BUILDING_ID = 'building_id',
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  NAME = 'name',
+  /** column name */
+  UPDATED_AT = 'updated_at'
+}
+
+export type DevicesUpdates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<DevicesSetInput>;
+  /** filter the rows which have to be updated */
+  where: DevicesBoolExp;
+};
+
 export type JsonbCastExp = {
   String?: InputMaybe<StringComparisonExp>;
 };
@@ -1062,6 +1546,10 @@ export type JsonbComparisonExp = {
 /** mutation root */
 export type MutationRoot = {
   __typename?: 'mutation_root';
+  /** delete data from the table: "access_logs" */
+  delete_access_logs?: Maybe<AccessLogsMutationResponse>;
+  /** delete single row from the table: "access_logs" */
+  delete_access_logs_by_pk?: Maybe<AccessLogs>;
   /** delete data from the table: "announcements" */
   delete_announcements?: Maybe<AnnouncementsMutationResponse>;
   /** delete single row from the table: "announcements" */
@@ -1070,14 +1558,18 @@ export type MutationRoot = {
   delete_buildings?: Maybe<BuildingsMutationResponse>;
   /** delete single row from the table: "buildings" */
   delete_buildings_by_pk?: Maybe<Buildings>;
-  /** delete data from the table: "call_logs" */
-  delete_call_logs?: Maybe<CallLogsMutationResponse>;
-  /** delete single row from the table: "call_logs" */
-  delete_call_logs_by_pk?: Maybe<CallLogs>;
+  /** delete data from the table: "call_status" */
+  delete_call_status?: Maybe<CallStatusMutationResponse>;
+  /** delete single row from the table: "call_status" */
+  delete_call_status_by_pk?: Maybe<CallStatus>;
   /** delete data from the table: "call_types" */
   delete_call_types?: Maybe<CallTypesMutationResponse>;
   /** delete single row from the table: "call_types" */
   delete_call_types_by_pk?: Maybe<CallTypes>;
+  /** delete data from the table: "devices" */
+  delete_devices?: Maybe<DevicesMutationResponse>;
+  /** delete single row from the table: "devices" */
+  delete_devices_by_pk?: Maybe<Devices>;
   /** delete data from the table: "notification_types" */
   delete_notification_types?: Maybe<NotificationTypesMutationResponse>;
   /** delete single row from the table: "notification_types" */
@@ -1094,6 +1586,10 @@ export type MutationRoot = {
   delete_one_time_access_code_status_types?: Maybe<OneTimeAccessCodeStatusTypesMutationResponse>;
   /** delete single row from the table: "one_time_access_code_status_types" */
   delete_one_time_access_code_status_types_by_pk?: Maybe<OneTimeAccessCodeStatusTypes>;
+  /** delete data from the table: "organizations" */
+  delete_organizations?: Maybe<OrganizationsMutationResponse>;
+  /** delete single row from the table: "organizations" */
+  delete_organizations_by_pk?: Maybe<Organizations>;
   /** delete data from the table: "roles" */
   delete_roles?: Maybe<RolesMutationResponse>;
   /** delete single row from the table: "roles" */
@@ -1110,10 +1606,18 @@ export type MutationRoot = {
   delete_units?: Maybe<UnitsMutationResponse>;
   /** delete single row from the table: "units" */
   delete_units_by_pk?: Maybe<Units>;
+  /** delete data from the table: "user_units" */
+  delete_user_units?: Maybe<UserUnitsMutationResponse>;
+  /** delete single row from the table: "user_units" */
+  delete_user_units_by_pk?: Maybe<UserUnits>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<UsersMutationResponse>;
   /** delete single row from the table: "users" */
   delete_users_by_pk?: Maybe<Users>;
+  /** insert data into the table: "access_logs" */
+  insert_access_logs?: Maybe<AccessLogsMutationResponse>;
+  /** insert a single row into the table: "access_logs" */
+  insert_access_logs_one?: Maybe<AccessLogs>;
   /** insert data into the table: "announcements" */
   insert_announcements?: Maybe<AnnouncementsMutationResponse>;
   /** insert a single row into the table: "announcements" */
@@ -1122,14 +1626,18 @@ export type MutationRoot = {
   insert_buildings?: Maybe<BuildingsMutationResponse>;
   /** insert a single row into the table: "buildings" */
   insert_buildings_one?: Maybe<Buildings>;
-  /** insert data into the table: "call_logs" */
-  insert_call_logs?: Maybe<CallLogsMutationResponse>;
-  /** insert a single row into the table: "call_logs" */
-  insert_call_logs_one?: Maybe<CallLogs>;
+  /** insert data into the table: "call_status" */
+  insert_call_status?: Maybe<CallStatusMutationResponse>;
+  /** insert a single row into the table: "call_status" */
+  insert_call_status_one?: Maybe<CallStatus>;
   /** insert data into the table: "call_types" */
   insert_call_types?: Maybe<CallTypesMutationResponse>;
   /** insert a single row into the table: "call_types" */
   insert_call_types_one?: Maybe<CallTypes>;
+  /** insert data into the table: "devices" */
+  insert_devices?: Maybe<DevicesMutationResponse>;
+  /** insert a single row into the table: "devices" */
+  insert_devices_one?: Maybe<Devices>;
   /** insert data into the table: "notification_types" */
   insert_notification_types?: Maybe<NotificationTypesMutationResponse>;
   /** insert a single row into the table: "notification_types" */
@@ -1146,6 +1654,10 @@ export type MutationRoot = {
   insert_one_time_access_code_status_types?: Maybe<OneTimeAccessCodeStatusTypesMutationResponse>;
   /** insert a single row into the table: "one_time_access_code_status_types" */
   insert_one_time_access_code_status_types_one?: Maybe<OneTimeAccessCodeStatusTypes>;
+  /** insert data into the table: "organizations" */
+  insert_organizations?: Maybe<OrganizationsMutationResponse>;
+  /** insert a single row into the table: "organizations" */
+  insert_organizations_one?: Maybe<Organizations>;
   /** insert data into the table: "roles" */
   insert_roles?: Maybe<RolesMutationResponse>;
   /** insert a single row into the table: "roles" */
@@ -1162,10 +1674,20 @@ export type MutationRoot = {
   insert_units?: Maybe<UnitsMutationResponse>;
   /** insert a single row into the table: "units" */
   insert_units_one?: Maybe<Units>;
+  /** insert data into the table: "user_units" */
+  insert_user_units?: Maybe<UserUnitsMutationResponse>;
+  /** insert a single row into the table: "user_units" */
+  insert_user_units_one?: Maybe<UserUnits>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<UsersMutationResponse>;
   /** insert a single row into the table: "users" */
   insert_users_one?: Maybe<Users>;
+  /** update data of the table: "access_logs" */
+  update_access_logs?: Maybe<AccessLogsMutationResponse>;
+  /** update single row of the table: "access_logs" */
+  update_access_logs_by_pk?: Maybe<AccessLogs>;
+  /** update multiples rows of table: "access_logs" */
+  update_access_logs_many?: Maybe<Array<Maybe<AccessLogsMutationResponse>>>;
   /** update data of the table: "announcements" */
   update_announcements?: Maybe<AnnouncementsMutationResponse>;
   /** update single row of the table: "announcements" */
@@ -1178,18 +1700,24 @@ export type MutationRoot = {
   update_buildings_by_pk?: Maybe<Buildings>;
   /** update multiples rows of table: "buildings" */
   update_buildings_many?: Maybe<Array<Maybe<BuildingsMutationResponse>>>;
-  /** update data of the table: "call_logs" */
-  update_call_logs?: Maybe<CallLogsMutationResponse>;
-  /** update single row of the table: "call_logs" */
-  update_call_logs_by_pk?: Maybe<CallLogs>;
-  /** update multiples rows of table: "call_logs" */
-  update_call_logs_many?: Maybe<Array<Maybe<CallLogsMutationResponse>>>;
+  /** update data of the table: "call_status" */
+  update_call_status?: Maybe<CallStatusMutationResponse>;
+  /** update single row of the table: "call_status" */
+  update_call_status_by_pk?: Maybe<CallStatus>;
+  /** update multiples rows of table: "call_status" */
+  update_call_status_many?: Maybe<Array<Maybe<CallStatusMutationResponse>>>;
   /** update data of the table: "call_types" */
   update_call_types?: Maybe<CallTypesMutationResponse>;
   /** update single row of the table: "call_types" */
   update_call_types_by_pk?: Maybe<CallTypes>;
   /** update multiples rows of table: "call_types" */
   update_call_types_many?: Maybe<Array<Maybe<CallTypesMutationResponse>>>;
+  /** update data of the table: "devices" */
+  update_devices?: Maybe<DevicesMutationResponse>;
+  /** update single row of the table: "devices" */
+  update_devices_by_pk?: Maybe<Devices>;
+  /** update multiples rows of table: "devices" */
+  update_devices_many?: Maybe<Array<Maybe<DevicesMutationResponse>>>;
   /** update data of the table: "notification_types" */
   update_notification_types?: Maybe<NotificationTypesMutationResponse>;
   /** update single row of the table: "notification_types" */
@@ -1214,6 +1742,12 @@ export type MutationRoot = {
   update_one_time_access_code_status_types_by_pk?: Maybe<OneTimeAccessCodeStatusTypes>;
   /** update multiples rows of table: "one_time_access_code_status_types" */
   update_one_time_access_code_status_types_many?: Maybe<Array<Maybe<OneTimeAccessCodeStatusTypesMutationResponse>>>;
+  /** update data of the table: "organizations" */
+  update_organizations?: Maybe<OrganizationsMutationResponse>;
+  /** update single row of the table: "organizations" */
+  update_organizations_by_pk?: Maybe<Organizations>;
+  /** update multiples rows of table: "organizations" */
+  update_organizations_many?: Maybe<Array<Maybe<OrganizationsMutationResponse>>>;
   /** update data of the table: "roles" */
   update_roles?: Maybe<RolesMutationResponse>;
   /** update single row of the table: "roles" */
@@ -1238,6 +1772,12 @@ export type MutationRoot = {
   update_units_by_pk?: Maybe<Units>;
   /** update multiples rows of table: "units" */
   update_units_many?: Maybe<Array<Maybe<UnitsMutationResponse>>>;
+  /** update data of the table: "user_units" */
+  update_user_units?: Maybe<UserUnitsMutationResponse>;
+  /** update single row of the table: "user_units" */
+  update_user_units_by_pk?: Maybe<UserUnits>;
+  /** update multiples rows of table: "user_units" */
+  update_user_units_many?: Maybe<Array<Maybe<UserUnitsMutationResponse>>>;
   /** update data of the table: "users" */
   update_users?: Maybe<UsersMutationResponse>;
   /** update single row of the table: "users" */
@@ -1246,6 +1786,18 @@ export type MutationRoot = {
   update_users_many?: Maybe<Array<Maybe<UsersMutationResponse>>>;
   userSignIn: UserSignInOutput;
   userSignUp: UserSignUpOutput;
+};
+
+
+/** mutation root */
+export type MutationRootDeleteAccessLogsArgs = {
+  where: AccessLogsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootDeleteAccessLogsByPkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -1274,14 +1826,14 @@ export type MutationRootDeleteBuildingsByPkArgs = {
 
 
 /** mutation root */
-export type MutationRootDeleteCallLogsArgs = {
-  where: CallLogsBoolExp;
+export type MutationRootDeleteCallStatusArgs = {
+  where: CallStatusBoolExp;
 };
 
 
 /** mutation root */
-export type MutationRootDeleteCallLogsByPkArgs = {
-  id: Scalars['uuid']['input'];
+export type MutationRootDeleteCallStatusByPkArgs = {
+  value: Scalars['String']['input'];
 };
 
 
@@ -1294,6 +1846,18 @@ export type MutationRootDeleteCallTypesArgs = {
 /** mutation root */
 export type MutationRootDeleteCallTypesByPkArgs = {
   value: Scalars['String']['input'];
+};
+
+
+/** mutation root */
+export type MutationRootDeleteDevicesArgs = {
+  where: DevicesBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootDeleteDevicesByPkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -1346,6 +1910,18 @@ export type MutationRootDeleteOneTimeAccessCodeStatusTypesByPkArgs = {
 
 
 /** mutation root */
+export type MutationRootDeleteOrganizationsArgs = {
+  where: OrganizationsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootDeleteOrganizationsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
 export type MutationRootDeleteRolesArgs = {
   where: RolesBoolExp;
 };
@@ -1394,6 +1970,18 @@ export type MutationRootDeleteUnitsByPkArgs = {
 
 
 /** mutation root */
+export type MutationRootDeleteUserUnitsArgs = {
+  where: UserUnitsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootDeleteUserUnitsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
 export type MutationRootDeleteUsersArgs = {
   where: UsersBoolExp;
 };
@@ -1402,6 +1990,20 @@ export type MutationRootDeleteUsersArgs = {
 /** mutation root */
 export type MutationRootDeleteUsersByPkArgs = {
   id: Scalars['uuid']['input'];
+};
+
+
+/** mutation root */
+export type MutationRootInsertAccessLogsArgs = {
+  objects: Array<AccessLogsInsertInput>;
+  on_conflict?: InputMaybe<AccessLogsOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootInsertAccessLogsOneArgs = {
+  object: AccessLogsInsertInput;
+  on_conflict?: InputMaybe<AccessLogsOnConflict>;
 };
 
 
@@ -1434,16 +2036,16 @@ export type MutationRootInsertBuildingsOneArgs = {
 
 
 /** mutation root */
-export type MutationRootInsertCallLogsArgs = {
-  objects: Array<CallLogsInsertInput>;
-  on_conflict?: InputMaybe<CallLogsOnConflict>;
+export type MutationRootInsertCallStatusArgs = {
+  objects: Array<CallStatusInsertInput>;
+  on_conflict?: InputMaybe<CallStatusOnConflict>;
 };
 
 
 /** mutation root */
-export type MutationRootInsertCallLogsOneArgs = {
-  object: CallLogsInsertInput;
-  on_conflict?: InputMaybe<CallLogsOnConflict>;
+export type MutationRootInsertCallStatusOneArgs = {
+  object: CallStatusInsertInput;
+  on_conflict?: InputMaybe<CallStatusOnConflict>;
 };
 
 
@@ -1458,6 +2060,20 @@ export type MutationRootInsertCallTypesArgs = {
 export type MutationRootInsertCallTypesOneArgs = {
   object: CallTypesInsertInput;
   on_conflict?: InputMaybe<CallTypesOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootInsertDevicesArgs = {
+  objects: Array<DevicesInsertInput>;
+  on_conflict?: InputMaybe<DevicesOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootInsertDevicesOneArgs = {
+  object: DevicesInsertInput;
+  on_conflict?: InputMaybe<DevicesOnConflict>;
 };
 
 
@@ -1518,6 +2134,20 @@ export type MutationRootInsertOneTimeAccessCodeStatusTypesOneArgs = {
 
 
 /** mutation root */
+export type MutationRootInsertOrganizationsArgs = {
+  objects: Array<OrganizationsInsertInput>;
+  on_conflict?: InputMaybe<OrganizationsOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootInsertOrganizationsOneArgs = {
+  object: OrganizationsInsertInput;
+  on_conflict?: InputMaybe<OrganizationsOnConflict>;
+};
+
+
+/** mutation root */
 export type MutationRootInsertRolesArgs = {
   objects: Array<RolesInsertInput>;
   on_conflict?: InputMaybe<RolesOnConflict>;
@@ -1574,6 +2204,20 @@ export type MutationRootInsertUnitsOneArgs = {
 
 
 /** mutation root */
+export type MutationRootInsertUserUnitsArgs = {
+  objects: Array<UserUnitsInsertInput>;
+  on_conflict?: InputMaybe<UserUnitsOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootInsertUserUnitsOneArgs = {
+  object: UserUnitsInsertInput;
+  on_conflict?: InputMaybe<UserUnitsOnConflict>;
+};
+
+
+/** mutation root */
 export type MutationRootInsertUsersArgs = {
   objects: Array<UsersInsertInput>;
   on_conflict?: InputMaybe<UsersOnConflict>;
@@ -1584,6 +2228,26 @@ export type MutationRootInsertUsersArgs = {
 export type MutationRootInsertUsersOneArgs = {
   object: UsersInsertInput;
   on_conflict?: InputMaybe<UsersOnConflict>;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateAccessLogsArgs = {
+  _set?: InputMaybe<AccessLogsSetInput>;
+  where: AccessLogsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateAccessLogsByPkArgs = {
+  _set?: InputMaybe<AccessLogsSetInput>;
+  pk_columns: AccessLogsPkColumnsInput;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateAccessLogsManyArgs = {
+  updates: Array<AccessLogsUpdates>;
 };
 
 
@@ -1638,22 +2302,22 @@ export type MutationRootUpdateBuildingsManyArgs = {
 
 
 /** mutation root */
-export type MutationRootUpdateCallLogsArgs = {
-  _set?: InputMaybe<CallLogsSetInput>;
-  where: CallLogsBoolExp;
+export type MutationRootUpdateCallStatusArgs = {
+  _set?: InputMaybe<CallStatusSetInput>;
+  where: CallStatusBoolExp;
 };
 
 
 /** mutation root */
-export type MutationRootUpdateCallLogsByPkArgs = {
-  _set?: InputMaybe<CallLogsSetInput>;
-  pk_columns: CallLogsPkColumnsInput;
+export type MutationRootUpdateCallStatusByPkArgs = {
+  _set?: InputMaybe<CallStatusSetInput>;
+  pk_columns: CallStatusPkColumnsInput;
 };
 
 
 /** mutation root */
-export type MutationRootUpdateCallLogsManyArgs = {
-  updates: Array<CallLogsUpdates>;
+export type MutationRootUpdateCallStatusManyArgs = {
+  updates: Array<CallStatusUpdates>;
 };
 
 
@@ -1674,6 +2338,26 @@ export type MutationRootUpdateCallTypesByPkArgs = {
 /** mutation root */
 export type MutationRootUpdateCallTypesManyArgs = {
   updates: Array<CallTypesUpdates>;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateDevicesArgs = {
+  _set?: InputMaybe<DevicesSetInput>;
+  where: DevicesBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateDevicesByPkArgs = {
+  _set?: InputMaybe<DevicesSetInput>;
+  pk_columns: DevicesPkColumnsInput;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateDevicesManyArgs = {
+  updates: Array<DevicesUpdates>;
 };
 
 
@@ -1758,6 +2442,26 @@ export type MutationRootUpdateOneTimeAccessCodeStatusTypesManyArgs = {
 
 
 /** mutation root */
+export type MutationRootUpdateOrganizationsArgs = {
+  _set?: InputMaybe<OrganizationsSetInput>;
+  where: OrganizationsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateOrganizationsByPkArgs = {
+  _set?: InputMaybe<OrganizationsSetInput>;
+  pk_columns: OrganizationsPkColumnsInput;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateOrganizationsManyArgs = {
+  updates: Array<OrganizationsUpdates>;
+};
+
+
+/** mutation root */
 export type MutationRootUpdateRolesArgs = {
   _set?: InputMaybe<RolesSetInput>;
   where: RolesBoolExp;
@@ -1836,6 +2540,26 @@ export type MutationRootUpdateUnitsByPkArgs = {
 /** mutation root */
 export type MutationRootUpdateUnitsManyArgs = {
   updates: Array<UnitsUpdates>;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateUserUnitsArgs = {
+  _set?: InputMaybe<UserUnitsSetInput>;
+  where: UserUnitsBoolExp;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateUserUnitsByPkArgs = {
+  _set?: InputMaybe<UserUnitsSetInput>;
+  pk_columns: UserUnitsPkColumnsInput;
+};
+
+
+/** mutation root */
+export type MutationRootUpdateUserUnitsManyArgs = {
+  updates: Array<UserUnitsUpdates>;
 };
 
 
@@ -2025,15 +2749,15 @@ export type NotificationTypesUpdates = {
 /** columns and relationships of "notifications" */
 export type Notifications = {
   __typename?: 'notifications';
+  /** An object relationship */
+  building: Buildings;
+  building_id: Scalars['uuid']['output'];
   created_at?: Maybe<Scalars['timestamp']['output']>;
   description: Scalars['String']['output'];
   id: Scalars['uuid']['output'];
   title: Scalars['String']['output'];
   type: NotificationTypesEnum;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  /** An object relationship */
-  user: Users;
-  user_id: Scalars['uuid']['output'];
 };
 
 /** aggregated selection of "notifications" */
@@ -2088,14 +2812,14 @@ export type NotificationsBoolExp = {
   _and?: InputMaybe<Array<NotificationsBoolExp>>;
   _not?: InputMaybe<NotificationsBoolExp>;
   _or?: InputMaybe<Array<NotificationsBoolExp>>;
+  building?: InputMaybe<BuildingsBoolExp>;
+  building_id?: InputMaybe<UuidComparisonExp>;
   created_at?: InputMaybe<TimestampComparisonExp>;
   description?: InputMaybe<StringComparisonExp>;
   id?: InputMaybe<UuidComparisonExp>;
   title?: InputMaybe<StringComparisonExp>;
   type?: InputMaybe<NotificationTypesEnumComparisonExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
-  user?: InputMaybe<UsersBoolExp>;
-  user_id?: InputMaybe<UuidComparisonExp>;
 };
 
 /** unique or primary key constraints on table "notifications" */
@@ -2106,56 +2830,56 @@ export enum NotificationsConstraint {
 
 /** input type for inserting data into table "notifications" */
 export type NotificationsInsertInput = {
+  building?: InputMaybe<BuildingsObjRelInsertInput>;
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<NotificationTypesEnum>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user?: InputMaybe<UsersObjRelInsertInput>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
 };
 
 /** aggregate max on columns */
 export type NotificationsMaxFields = {
   __typename?: 'notifications_max_fields';
+  building_id?: Maybe<Scalars['uuid']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
 };
 
 /** order by max() on columns of table "notifications" */
 export type NotificationsMaxOrderBy = {
+  building_id?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   description?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   title?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
 };
 
 /** aggregate min on columns */
 export type NotificationsMinFields = {
   __typename?: 'notifications_min_fields';
+  building_id?: Maybe<Scalars['uuid']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
 };
 
 /** order by min() on columns of table "notifications" */
 export type NotificationsMinOrderBy = {
+  building_id?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   description?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   title?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
 };
 
 /** response of any mutation on the table "notifications" */
@@ -2176,14 +2900,14 @@ export type NotificationsOnConflict = {
 
 /** Ordering options when selecting data from "notifications". */
 export type NotificationsOrderBy = {
+  building?: InputMaybe<BuildingsOrderBy>;
+  building_id?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   description?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   title?: InputMaybe<OrderBy>;
   type?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user?: InputMaybe<UsersOrderBy>;
-  user_id?: InputMaybe<OrderBy>;
 };
 
 /** primary key columns input for table: notifications */
@@ -2193,6 +2917,8 @@ export type NotificationsPkColumnsInput = {
 
 /** select columns of table "notifications" */
 export enum NotificationsSelectColumn {
+  /** column name */
+  BUILDING_ID = 'building_id',
   /** column name */
   CREATED_AT = 'created_at',
   /** column name */
@@ -2204,20 +2930,18 @@ export enum NotificationsSelectColumn {
   /** column name */
   TYPE = 'type',
   /** column name */
-  UPDATED_AT = 'updated_at',
-  /** column name */
-  USER_ID = 'user_id'
+  UPDATED_AT = 'updated_at'
 }
 
 /** input type for updating data in table "notifications" */
 export type NotificationsSetInput = {
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<NotificationTypesEnum>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
 };
 
 /** Streaming cursor of the table "notifications" */
@@ -2230,17 +2954,19 @@ export type NotificationsStreamCursorInput = {
 
 /** Initial value of the column from where the streaming should start */
 export type NotificationsStreamCursorValueInput = {
+  building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<NotificationTypesEnum>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
 };
 
 /** update columns of table "notifications" */
 export enum NotificationsUpdateColumn {
+  /** column name */
+  BUILDING_ID = 'building_id',
   /** column name */
   CREATED_AT = 'created_at',
   /** column name */
@@ -2252,9 +2978,7 @@ export enum NotificationsUpdateColumn {
   /** column name */
   TYPE = 'type',
   /** column name */
-  UPDATED_AT = 'updated_at',
-  /** column name */
-  USER_ID = 'user_id'
+  UPDATED_AT = 'updated_at'
 }
 
 export type NotificationsUpdates = {
@@ -2267,18 +2991,20 @@ export type NotificationsUpdates = {
 /** columns and relationships of "one_time_access_code" */
 export type OneTimeAccessCode = {
   __typename?: 'one_time_access_code';
+  /** An object relationship */
+  access_log?: Maybe<AccessLogs>;
+  access_log_id?: Maybe<Scalars['uuid']['output']>;
   code: Scalars['String']['output'];
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id: Scalars['uuid']['output'];
   purpose: Scalars['String']['output'];
   status: OneTimeAccessCodeStatusTypesEnum;
-  updated_at?: Maybe<Scalars['timestamp']['output']>;
   /** An object relationship */
-  user: Users;
-  user_id: Scalars['uuid']['output'];
+  unit: Units;
+  unit_id: Scalars['uuid']['output'];
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
   valid_from?: Maybe<Scalars['timestamp']['output']>;
   valid_to?: Maybe<Scalars['timestamp']['output']>;
-  visitor_photo?: Maybe<Scalars['String']['output']>;
 };
 
 /** aggregated selection of "one_time_access_code" */
@@ -2333,17 +3059,18 @@ export type OneTimeAccessCodeBoolExp = {
   _and?: InputMaybe<Array<OneTimeAccessCodeBoolExp>>;
   _not?: InputMaybe<OneTimeAccessCodeBoolExp>;
   _or?: InputMaybe<Array<OneTimeAccessCodeBoolExp>>;
+  access_log?: InputMaybe<AccessLogsBoolExp>;
+  access_log_id?: InputMaybe<UuidComparisonExp>;
   code?: InputMaybe<StringComparisonExp>;
   created_at?: InputMaybe<TimestampComparisonExp>;
   id?: InputMaybe<UuidComparisonExp>;
   purpose?: InputMaybe<StringComparisonExp>;
   status?: InputMaybe<OneTimeAccessCodeStatusTypesEnumComparisonExp>;
+  unit?: InputMaybe<UnitsBoolExp>;
+  unit_id?: InputMaybe<UuidComparisonExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
-  user?: InputMaybe<UsersBoolExp>;
-  user_id?: InputMaybe<UuidComparisonExp>;
   valid_from?: InputMaybe<TimestampComparisonExp>;
   valid_to?: InputMaybe<TimestampComparisonExp>;
-  visitor_photo?: InputMaybe<StringComparisonExp>;
 };
 
 /** unique or primary key constraints on table "one_time_access_code" */
@@ -2354,71 +3081,72 @@ export enum OneTimeAccessCodeConstraint {
 
 /** input type for inserting data into table "one_time_access_code" */
 export type OneTimeAccessCodeInsertInput = {
+  access_log?: InputMaybe<AccessLogsObjRelInsertInput>;
+  access_log_id?: InputMaybe<Scalars['uuid']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   purpose?: InputMaybe<Scalars['String']['input']>;
   status?: InputMaybe<OneTimeAccessCodeStatusTypesEnum>;
+  unit?: InputMaybe<UnitsObjRelInsertInput>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user?: InputMaybe<UsersObjRelInsertInput>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
   valid_from?: InputMaybe<Scalars['timestamp']['input']>;
   valid_to?: InputMaybe<Scalars['timestamp']['input']>;
-  visitor_photo?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** aggregate max on columns */
 export type OneTimeAccessCodeMaxFields = {
   __typename?: 'one_time_access_code_max_fields';
+  access_log_id?: Maybe<Scalars['uuid']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   purpose?: Maybe<Scalars['String']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
   valid_from?: Maybe<Scalars['timestamp']['output']>;
   valid_to?: Maybe<Scalars['timestamp']['output']>;
-  visitor_photo?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by max() on columns of table "one_time_access_code" */
 export type OneTimeAccessCodeMaxOrderBy = {
+  access_log_id?: InputMaybe<OrderBy>;
   code?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   purpose?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
   valid_from?: InputMaybe<OrderBy>;
   valid_to?: InputMaybe<OrderBy>;
-  visitor_photo?: InputMaybe<OrderBy>;
 };
 
 /** aggregate min on columns */
 export type OneTimeAccessCodeMinFields = {
   __typename?: 'one_time_access_code_min_fields';
+  access_log_id?: Maybe<Scalars['uuid']['output']>;
   code?: Maybe<Scalars['String']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   purpose?: Maybe<Scalars['String']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  user_id?: Maybe<Scalars['uuid']['output']>;
   valid_from?: Maybe<Scalars['timestamp']['output']>;
   valid_to?: Maybe<Scalars['timestamp']['output']>;
-  visitor_photo?: Maybe<Scalars['String']['output']>;
 };
 
 /** order by min() on columns of table "one_time_access_code" */
 export type OneTimeAccessCodeMinOrderBy = {
+  access_log_id?: InputMaybe<OrderBy>;
   code?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   purpose?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user_id?: InputMaybe<OrderBy>;
   valid_from?: InputMaybe<OrderBy>;
   valid_to?: InputMaybe<OrderBy>;
-  visitor_photo?: InputMaybe<OrderBy>;
 };
 
 /** response of any mutation on the table "one_time_access_code" */
@@ -2439,17 +3167,18 @@ export type OneTimeAccessCodeOnConflict = {
 
 /** Ordering options when selecting data from "one_time_access_code". */
 export type OneTimeAccessCodeOrderBy = {
+  access_log?: InputMaybe<AccessLogsOrderBy>;
+  access_log_id?: InputMaybe<OrderBy>;
   code?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   purpose?: InputMaybe<OrderBy>;
   status?: InputMaybe<OrderBy>;
+  unit?: InputMaybe<UnitsOrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user?: InputMaybe<UsersOrderBy>;
-  user_id?: InputMaybe<OrderBy>;
   valid_from?: InputMaybe<OrderBy>;
   valid_to?: InputMaybe<OrderBy>;
-  visitor_photo?: InputMaybe<OrderBy>;
 };
 
 /** primary key columns input for table: one_time_access_code */
@@ -2459,6 +3188,8 @@ export type OneTimeAccessCodePkColumnsInput = {
 
 /** select columns of table "one_time_access_code" */
 export enum OneTimeAccessCodeSelectColumn {
+  /** column name */
+  ACCESS_LOG_ID = 'access_log_id',
   /** column name */
   CODE = 'code',
   /** column name */
@@ -2470,29 +3201,27 @@ export enum OneTimeAccessCodeSelectColumn {
   /** column name */
   STATUS = 'status',
   /** column name */
-  UPDATED_AT = 'updated_at',
+  UNIT_ID = 'unit_id',
   /** column name */
-  USER_ID = 'user_id',
+  UPDATED_AT = 'updated_at',
   /** column name */
   VALID_FROM = 'valid_from',
   /** column name */
-  VALID_TO = 'valid_to',
-  /** column name */
-  VISITOR_PHOTO = 'visitor_photo'
+  VALID_TO = 'valid_to'
 }
 
 /** input type for updating data in table "one_time_access_code" */
 export type OneTimeAccessCodeSetInput = {
+  access_log_id?: InputMaybe<Scalars['uuid']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   purpose?: InputMaybe<Scalars['String']['input']>;
   status?: InputMaybe<OneTimeAccessCodeStatusTypesEnum>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
   valid_from?: InputMaybe<Scalars['timestamp']['input']>;
   valid_to?: InputMaybe<Scalars['timestamp']['input']>;
-  visitor_photo?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** columns and relationships of "one_time_access_code_status_types" */
@@ -2542,6 +3271,8 @@ export enum OneTimeAccessCodeStatusTypesConstraint {
 export enum OneTimeAccessCodeStatusTypesEnum {
   /** Access code is currently active */
   ACTIVE = 'active',
+  /** Access code has expired */
+  EXPIRED = 'expired',
   /** Access code has been used */
   USED = 'used'
 }
@@ -2655,20 +3386,22 @@ export type OneTimeAccessCodeStreamCursorInput = {
 
 /** Initial value of the column from where the streaming should start */
 export type OneTimeAccessCodeStreamCursorValueInput = {
+  access_log_id?: InputMaybe<Scalars['uuid']['input']>;
   code?: InputMaybe<Scalars['String']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   purpose?: InputMaybe<Scalars['String']['input']>;
   status?: InputMaybe<OneTimeAccessCodeStatusTypesEnum>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user_id?: InputMaybe<Scalars['uuid']['input']>;
   valid_from?: InputMaybe<Scalars['timestamp']['input']>;
   valid_to?: InputMaybe<Scalars['timestamp']['input']>;
-  visitor_photo?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** update columns of table "one_time_access_code" */
 export enum OneTimeAccessCodeUpdateColumn {
+  /** column name */
+  ACCESS_LOG_ID = 'access_log_id',
   /** column name */
   CODE = 'code',
   /** column name */
@@ -2680,15 +3413,13 @@ export enum OneTimeAccessCodeUpdateColumn {
   /** column name */
   STATUS = 'status',
   /** column name */
-  UPDATED_AT = 'updated_at',
+  UNIT_ID = 'unit_id',
   /** column name */
-  USER_ID = 'user_id',
+  UPDATED_AT = 'updated_at',
   /** column name */
   VALID_FROM = 'valid_from',
   /** column name */
-  VALID_TO = 'valid_to',
-  /** column name */
-  VISITOR_PHOTO = 'visitor_photo'
+  VALID_TO = 'valid_to'
 }
 
 export type OneTimeAccessCodeUpdates = {
@@ -2714,32 +3445,237 @@ export enum OrderBy {
   DESC_NULLS_LAST = 'desc_nulls_last'
 }
 
+/** columns and relationships of "organizations" */
+export type Organizations = {
+  __typename?: 'organizations';
+  /** An array relationship */
+  buildings: Array<Buildings>;
+  /** An aggregate relationship */
+  buildings_aggregate: BuildingsAggregate;
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id: Scalars['uuid']['output'];
+  name: Scalars['String']['output'];
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+
+/** columns and relationships of "organizations" */
+export type OrganizationsBuildingsArgs = {
+  distinct_on?: InputMaybe<Array<BuildingsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<BuildingsOrderBy>>;
+  where?: InputMaybe<BuildingsBoolExp>;
+};
+
+
+/** columns and relationships of "organizations" */
+export type OrganizationsBuildingsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<BuildingsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<BuildingsOrderBy>>;
+  where?: InputMaybe<BuildingsBoolExp>;
+};
+
+/** aggregated selection of "organizations" */
+export type OrganizationsAggregate = {
+  __typename?: 'organizations_aggregate';
+  aggregate?: Maybe<OrganizationsAggregateFields>;
+  nodes: Array<Organizations>;
+};
+
+/** aggregate fields of "organizations" */
+export type OrganizationsAggregateFields = {
+  __typename?: 'organizations_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<OrganizationsMaxFields>;
+  min?: Maybe<OrganizationsMinFields>;
+};
+
+
+/** aggregate fields of "organizations" */
+export type OrganizationsAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<OrganizationsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** Boolean expression to filter rows from the table "organizations". All fields are combined with a logical 'AND'. */
+export type OrganizationsBoolExp = {
+  _and?: InputMaybe<Array<OrganizationsBoolExp>>;
+  _not?: InputMaybe<OrganizationsBoolExp>;
+  _or?: InputMaybe<Array<OrganizationsBoolExp>>;
+  buildings?: InputMaybe<BuildingsBoolExp>;
+  buildings_aggregate?: InputMaybe<BuildingsAggregateBoolExp>;
+  created_at?: InputMaybe<TimestampComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
+  name?: InputMaybe<StringComparisonExp>;
+  updated_at?: InputMaybe<TimestampComparisonExp>;
+};
+
+/** unique or primary key constraints on table "organizations" */
+export enum OrganizationsConstraint {
+  /** unique or primary key constraint on columns "id" */
+  ORGANIZATIONS_PKEY = 'organizations_pkey'
+}
+
+/** input type for inserting data into table "organizations" */
+export type OrganizationsInsertInput = {
+  buildings?: InputMaybe<BuildingsArrRelInsertInput>;
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** aggregate max on columns */
+export type OrganizationsMaxFields = {
+  __typename?: 'organizations_max_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** aggregate min on columns */
+export type OrganizationsMinFields = {
+  __typename?: 'organizations_min_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+};
+
+/** response of any mutation on the table "organizations" */
+export type OrganizationsMutationResponse = {
+  __typename?: 'organizations_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Organizations>;
+};
+
+/** input type for inserting object relation for remote table "organizations" */
+export type OrganizationsObjRelInsertInput = {
+  data: OrganizationsInsertInput;
+  /** upsert condition */
+  on_conflict?: InputMaybe<OrganizationsOnConflict>;
+};
+
+/** on_conflict condition type for table "organizations" */
+export type OrganizationsOnConflict = {
+  constraint: OrganizationsConstraint;
+  update_columns?: Array<OrganizationsUpdateColumn>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+/** Ordering options when selecting data from "organizations". */
+export type OrganizationsOrderBy = {
+  buildings_aggregate?: InputMaybe<BuildingsAggregateOrderBy>;
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: organizations */
+export type OrganizationsPkColumnsInput = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "organizations" */
+export enum OrganizationsSelectColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  NAME = 'name',
+  /** column name */
+  UPDATED_AT = 'updated_at'
+}
+
+/** input type for updating data in table "organizations" */
+export type OrganizationsSetInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** Streaming cursor of the table "organizations" */
+export type OrganizationsStreamCursorInput = {
+  /** Stream column input with initial value */
+  initial_value: OrganizationsStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type OrganizationsStreamCursorValueInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+};
+
+/** update columns of table "organizations" */
+export enum OrganizationsUpdateColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  NAME = 'name',
+  /** column name */
+  UPDATED_AT = 'updated_at'
+}
+
+export type OrganizationsUpdates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<OrganizationsSetInput>;
+  /** filter the rows which have to be updated */
+  where: OrganizationsBoolExp;
+};
+
 export type QueryRoot = {
   __typename?: 'query_root';
+  /** An array relationship */
+  access_logs: Array<AccessLogs>;
+  /** An aggregate relationship */
+  access_logs_aggregate: AccessLogsAggregate;
+  /** fetch data from the table: "access_logs" using primary key columns */
+  access_logs_by_pk?: Maybe<AccessLogs>;
   /** An array relationship */
   announcements: Array<Announcements>;
   /** An aggregate relationship */
   announcements_aggregate: AnnouncementsAggregate;
   /** fetch data from the table: "announcements" using primary key columns */
   announcements_by_pk?: Maybe<Announcements>;
-  /** fetch data from the table: "buildings" */
+  /** An array relationship */
   buildings: Array<Buildings>;
-  /** fetch aggregated fields from the table: "buildings" */
+  /** An aggregate relationship */
   buildings_aggregate: BuildingsAggregate;
   /** fetch data from the table: "buildings" using primary key columns */
   buildings_by_pk?: Maybe<Buildings>;
-  /** An array relationship */
-  call_logs: Array<CallLogs>;
-  /** An aggregate relationship */
-  call_logs_aggregate: CallLogsAggregate;
-  /** fetch data from the table: "call_logs" using primary key columns */
-  call_logs_by_pk?: Maybe<CallLogs>;
+  /** fetch data from the table: "call_status" */
+  call_status: Array<CallStatus>;
+  /** fetch aggregated fields from the table: "call_status" */
+  call_status_aggregate: CallStatusAggregate;
+  /** fetch data from the table: "call_status" using primary key columns */
+  call_status_by_pk?: Maybe<CallStatus>;
   /** fetch data from the table: "call_types" */
   call_types: Array<CallTypes>;
   /** fetch aggregated fields from the table: "call_types" */
   call_types_aggregate: CallTypesAggregate;
   /** fetch data from the table: "call_types" using primary key columns */
   call_types_by_pk?: Maybe<CallTypes>;
+  /** An array relationship */
+  devices: Array<Devices>;
+  /** An aggregate relationship */
+  devices_aggregate: DevicesAggregate;
+  /** fetch data from the table: "devices" using primary key columns */
+  devices_by_pk?: Maybe<Devices>;
   /** fetch data from the table: "notification_types" */
   notification_types: Array<NotificationTypes>;
   /** fetch aggregated fields from the table: "notification_types" */
@@ -2764,6 +3700,12 @@ export type QueryRoot = {
   one_time_access_code_status_types_aggregate: OneTimeAccessCodeStatusTypesAggregate;
   /** fetch data from the table: "one_time_access_code_status_types" using primary key columns */
   one_time_access_code_status_types_by_pk?: Maybe<OneTimeAccessCodeStatusTypes>;
+  /** fetch data from the table: "organizations" */
+  organizations: Array<Organizations>;
+  /** fetch aggregated fields from the table: "organizations" */
+  organizations_aggregate: OrganizationsAggregate;
+  /** fetch data from the table: "organizations" using primary key columns */
+  organizations_by_pk?: Maybe<Organizations>;
   requestSmsVerifCode: RequestSmsVerifCodeOutput;
   /** fetch data from the table: "roles" */
   roles: Array<Roles>;
@@ -2790,11 +3732,40 @@ export type QueryRoot = {
   /** fetch data from the table: "units" using primary key columns */
   units_by_pk?: Maybe<Units>;
   /** An array relationship */
-  users: Array<Users>;
+  user_units: Array<UserUnits>;
   /** An aggregate relationship */
+  user_units_aggregate: UserUnitsAggregate;
+  /** fetch data from the table: "user_units" using primary key columns */
+  user_units_by_pk?: Maybe<UserUnits>;
+  /** fetch data from the table: "users" */
+  users: Array<Users>;
+  /** fetch aggregated fields from the table: "users" */
   users_aggregate: UsersAggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+export type QueryRootAccessLogsArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+
+export type QueryRootAccessLogsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+
+export type QueryRootAccessLogsByPkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -2844,26 +3815,26 @@ export type QueryRootBuildingsByPkArgs = {
 };
 
 
-export type QueryRootCallLogsArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
+export type QueryRootCallStatusArgs = {
+  distinct_on?: InputMaybe<Array<CallStatusSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
+  order_by?: InputMaybe<Array<CallStatusOrderBy>>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
 
-export type QueryRootCallLogsAggregateArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
+export type QueryRootCallStatusAggregateArgs = {
+  distinct_on?: InputMaybe<Array<CallStatusSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
+  order_by?: InputMaybe<Array<CallStatusOrderBy>>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
 
-export type QueryRootCallLogsByPkArgs = {
-  id: Scalars['uuid']['input'];
+export type QueryRootCallStatusByPkArgs = {
+  value: Scalars['String']['input'];
 };
 
 
@@ -2887,6 +3858,29 @@ export type QueryRootCallTypesAggregateArgs = {
 
 export type QueryRootCallTypesByPkArgs = {
   value: Scalars['String']['input'];
+};
+
+
+export type QueryRootDevicesArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+export type QueryRootDevicesAggregateArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+export type QueryRootDevicesByPkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -2979,6 +3973,29 @@ export type QueryRootOneTimeAccessCodeStatusTypesAggregateArgs = {
 
 export type QueryRootOneTimeAccessCodeStatusTypesByPkArgs = {
   value: Scalars['String']['input'];
+};
+
+
+export type QueryRootOrganizationsArgs = {
+  distinct_on?: InputMaybe<Array<OrganizationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OrganizationsOrderBy>>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+
+export type QueryRootOrganizationsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<OrganizationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OrganizationsOrderBy>>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+
+export type QueryRootOrganizationsByPkArgs = {
+  id: Scalars['uuid']['input'];
 };
 
 
@@ -3079,6 +4096,29 @@ export type QueryRootUnitsByPkArgs = {
 };
 
 
+export type QueryRootUserUnitsArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+export type QueryRootUserUnitsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+export type QueryRootUserUnitsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
 export type QueryRootUsersArgs = {
   distinct_on?: InputMaybe<Array<UsersSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3150,7 +4190,7 @@ export enum RolesEnum {
   ADMIN = 'admin',
   /** A user who resides in the building */
   RESIDENT = 'resident',
-  /** A temporary user or guest */
+  /** A temporary user or guest for tablet in kiosk mode */
   VISITOR = 'visitor'
 }
 
@@ -3260,8 +4300,6 @@ export type Settings = {
   id: Scalars['uuid']['output'];
   two_fa_type: TwoFaTypesEnum;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-  /** An object relationship */
-  user: Users;
   user_id: Scalars['uuid']['output'];
 };
 
@@ -3321,7 +4359,6 @@ export type SettingsBoolExp = {
   id?: InputMaybe<UuidComparisonExp>;
   two_fa_type?: InputMaybe<TwoFaTypesEnumComparisonExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
-  user?: InputMaybe<UsersBoolExp>;
   user_id?: InputMaybe<UuidComparisonExp>;
 };
 
@@ -3337,7 +4374,6 @@ export type SettingsInsertInput = {
   id?: InputMaybe<Scalars['uuid']['input']>;
   two_fa_type?: InputMaybe<TwoFaTypesEnum>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  user?: InputMaybe<UsersObjRelInsertInput>;
   user_id?: InputMaybe<Scalars['uuid']['input']>;
 };
 
@@ -3397,7 +4433,6 @@ export type SettingsOrderBy = {
   id?: InputMaybe<OrderBy>;
   two_fa_type?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  user?: InputMaybe<UsersOrderBy>;
   user_id?: InputMaybe<OrderBy>;
 };
 
@@ -3470,6 +4505,14 @@ export type SettingsUpdates = {
 export type SubscriptionRoot = {
   __typename?: 'subscription_root';
   /** An array relationship */
+  access_logs: Array<AccessLogs>;
+  /** An aggregate relationship */
+  access_logs_aggregate: AccessLogsAggregate;
+  /** fetch data from the table: "access_logs" using primary key columns */
+  access_logs_by_pk?: Maybe<AccessLogs>;
+  /** fetch data from the table in a streaming manner: "access_logs" */
+  access_logs_stream: Array<AccessLogs>;
+  /** An array relationship */
   announcements: Array<Announcements>;
   /** An aggregate relationship */
   announcements_aggregate: AnnouncementsAggregate;
@@ -3477,22 +4520,22 @@ export type SubscriptionRoot = {
   announcements_by_pk?: Maybe<Announcements>;
   /** fetch data from the table in a streaming manner: "announcements" */
   announcements_stream: Array<Announcements>;
-  /** fetch data from the table: "buildings" */
+  /** An array relationship */
   buildings: Array<Buildings>;
-  /** fetch aggregated fields from the table: "buildings" */
+  /** An aggregate relationship */
   buildings_aggregate: BuildingsAggregate;
   /** fetch data from the table: "buildings" using primary key columns */
   buildings_by_pk?: Maybe<Buildings>;
   /** fetch data from the table in a streaming manner: "buildings" */
   buildings_stream: Array<Buildings>;
-  /** An array relationship */
-  call_logs: Array<CallLogs>;
-  /** An aggregate relationship */
-  call_logs_aggregate: CallLogsAggregate;
-  /** fetch data from the table: "call_logs" using primary key columns */
-  call_logs_by_pk?: Maybe<CallLogs>;
-  /** fetch data from the table in a streaming manner: "call_logs" */
-  call_logs_stream: Array<CallLogs>;
+  /** fetch data from the table: "call_status" */
+  call_status: Array<CallStatus>;
+  /** fetch aggregated fields from the table: "call_status" */
+  call_status_aggregate: CallStatusAggregate;
+  /** fetch data from the table: "call_status" using primary key columns */
+  call_status_by_pk?: Maybe<CallStatus>;
+  /** fetch data from the table in a streaming manner: "call_status" */
+  call_status_stream: Array<CallStatus>;
   /** fetch data from the table: "call_types" */
   call_types: Array<CallTypes>;
   /** fetch aggregated fields from the table: "call_types" */
@@ -3501,6 +4544,14 @@ export type SubscriptionRoot = {
   call_types_by_pk?: Maybe<CallTypes>;
   /** fetch data from the table in a streaming manner: "call_types" */
   call_types_stream: Array<CallTypes>;
+  /** An array relationship */
+  devices: Array<Devices>;
+  /** An aggregate relationship */
+  devices_aggregate: DevicesAggregate;
+  /** fetch data from the table: "devices" using primary key columns */
+  devices_by_pk?: Maybe<Devices>;
+  /** fetch data from the table in a streaming manner: "devices" */
+  devices_stream: Array<Devices>;
   /** fetch data from the table: "notification_types" */
   notification_types: Array<NotificationTypes>;
   /** fetch aggregated fields from the table: "notification_types" */
@@ -3533,6 +4584,14 @@ export type SubscriptionRoot = {
   one_time_access_code_status_types_stream: Array<OneTimeAccessCodeStatusTypes>;
   /** fetch data from the table in a streaming manner: "one_time_access_code" */
   one_time_access_code_stream: Array<OneTimeAccessCode>;
+  /** fetch data from the table: "organizations" */
+  organizations: Array<Organizations>;
+  /** fetch aggregated fields from the table: "organizations" */
+  organizations_aggregate: OrganizationsAggregate;
+  /** fetch data from the table: "organizations" using primary key columns */
+  organizations_by_pk?: Maybe<Organizations>;
+  /** fetch data from the table in a streaming manner: "organizations" */
+  organizations_stream: Array<Organizations>;
   /** fetch data from the table: "roles" */
   roles: Array<Roles>;
   /** fetch aggregated fields from the table: "roles" */
@@ -3566,13 +4625,51 @@ export type SubscriptionRoot = {
   /** fetch data from the table in a streaming manner: "units" */
   units_stream: Array<Units>;
   /** An array relationship */
-  users: Array<Users>;
+  user_units: Array<UserUnits>;
   /** An aggregate relationship */
+  user_units_aggregate: UserUnitsAggregate;
+  /** fetch data from the table: "user_units" using primary key columns */
+  user_units_by_pk?: Maybe<UserUnits>;
+  /** fetch data from the table in a streaming manner: "user_units" */
+  user_units_stream: Array<UserUnits>;
+  /** fetch data from the table: "users" */
+  users: Array<Users>;
+  /** fetch aggregated fields from the table: "users" */
   users_aggregate: UsersAggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
   /** fetch data from the table in a streaming manner: "users" */
   users_stream: Array<Users>;
+};
+
+
+export type SubscriptionRootAccessLogsArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+
+export type SubscriptionRootAccessLogsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+
+export type SubscriptionRootAccessLogsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type SubscriptionRootAccessLogsStreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<AccessLogsStreamCursorInput>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
 };
 
 
@@ -3636,33 +4733,33 @@ export type SubscriptionRootBuildingsStreamArgs = {
 };
 
 
-export type SubscriptionRootCallLogsArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
+export type SubscriptionRootCallStatusArgs = {
+  distinct_on?: InputMaybe<Array<CallStatusSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
+  order_by?: InputMaybe<Array<CallStatusOrderBy>>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
 
-export type SubscriptionRootCallLogsAggregateArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
+export type SubscriptionRootCallStatusAggregateArgs = {
+  distinct_on?: InputMaybe<Array<CallStatusSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
+  order_by?: InputMaybe<Array<CallStatusOrderBy>>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
 
-export type SubscriptionRootCallLogsByPkArgs = {
-  id: Scalars['uuid']['input'];
+export type SubscriptionRootCallStatusByPkArgs = {
+  value: Scalars['String']['input'];
 };
 
 
-export type SubscriptionRootCallLogsStreamArgs = {
+export type SubscriptionRootCallStatusStreamArgs = {
   batch_size: Scalars['Int']['input'];
-  cursor: Array<InputMaybe<CallLogsStreamCursorInput>>;
-  where?: InputMaybe<CallLogsBoolExp>;
+  cursor: Array<InputMaybe<CallStatusStreamCursorInput>>;
+  where?: InputMaybe<CallStatusBoolExp>;
 };
 
 
@@ -3693,6 +4790,36 @@ export type SubscriptionRootCallTypesStreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<CallTypesStreamCursorInput>>;
   where?: InputMaybe<CallTypesBoolExp>;
+};
+
+
+export type SubscriptionRootDevicesArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+export type SubscriptionRootDevicesAggregateArgs = {
+  distinct_on?: InputMaybe<Array<DevicesSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<DevicesOrderBy>>;
+  where?: InputMaybe<DevicesBoolExp>;
+};
+
+
+export type SubscriptionRootDevicesByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type SubscriptionRootDevicesStreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<DevicesStreamCursorInput>>;
+  where?: InputMaybe<DevicesBoolExp>;
 };
 
 
@@ -3816,6 +4943,36 @@ export type SubscriptionRootOneTimeAccessCodeStreamArgs = {
 };
 
 
+export type SubscriptionRootOrganizationsArgs = {
+  distinct_on?: InputMaybe<Array<OrganizationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OrganizationsOrderBy>>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+
+export type SubscriptionRootOrganizationsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<OrganizationsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OrganizationsOrderBy>>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+
+export type SubscriptionRootOrganizationsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type SubscriptionRootOrganizationsStreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<OrganizationsStreamCursorInput>>;
+  where?: InputMaybe<OrganizationsBoolExp>;
+};
+
+
 export type SubscriptionRootRolesArgs = {
   distinct_on?: InputMaybe<Array<RolesSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3933,6 +5090,36 @@ export type SubscriptionRootUnitsStreamArgs = {
   batch_size: Scalars['Int']['input'];
   cursor: Array<InputMaybe<UnitsStreamCursorInput>>;
   where?: InputMaybe<UnitsBoolExp>;
+};
+
+
+export type SubscriptionRootUserUnitsArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+export type SubscriptionRootUserUnitsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+export type SubscriptionRootUserUnitsByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+
+export type SubscriptionRootUserUnitsStreamArgs = {
+  batch_size: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<UserUnitsStreamCursorInput>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
 };
 
 
@@ -4135,37 +5322,85 @@ export type TwoFaTypesUpdates = {
 /** columns and relationships of "units" */
 export type Units = {
   __typename?: 'units';
+  /** An array relationship */
+  access_logs: Array<AccessLogs>;
+  /** An aggregate relationship */
+  access_logs_aggregate: AccessLogsAggregate;
   /** An object relationship */
   building: Buildings;
   building_id: Scalars['uuid']['output'];
   created_at?: Maybe<Scalars['timestamp']['output']>;
   id: Scalars['uuid']['output'];
   number: Scalars['Int']['output'];
+  /** An array relationship */
+  one_time_access_codes: Array<OneTimeAccessCode>;
+  /** An aggregate relationship */
+  one_time_access_codes_aggregate: OneTimeAccessCodeAggregate;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
   /** An array relationship */
-  users: Array<Users>;
+  user_units: Array<UserUnits>;
   /** An aggregate relationship */
-  users_aggregate: UsersAggregate;
+  user_units_aggregate: UserUnitsAggregate;
 };
 
 
 /** columns and relationships of "units" */
-export type UnitsUsersArgs = {
-  distinct_on?: InputMaybe<Array<UsersSelectColumn>>;
+export type UnitsAccessLogsArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<UsersOrderBy>>;
-  where?: InputMaybe<UsersBoolExp>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
 };
 
 
 /** columns and relationships of "units" */
-export type UnitsUsersAggregateArgs = {
-  distinct_on?: InputMaybe<Array<UsersSelectColumn>>;
+export type UnitsAccessLogsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<AccessLogsSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<UsersOrderBy>>;
-  where?: InputMaybe<UsersBoolExp>;
+  order_by?: InputMaybe<Array<AccessLogsOrderBy>>;
+  where?: InputMaybe<AccessLogsBoolExp>;
+};
+
+
+/** columns and relationships of "units" */
+export type UnitsOneTimeAccessCodesArgs = {
+  distinct_on?: InputMaybe<Array<OneTimeAccessCodeSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OneTimeAccessCodeOrderBy>>;
+  where?: InputMaybe<OneTimeAccessCodeBoolExp>;
+};
+
+
+/** columns and relationships of "units" */
+export type UnitsOneTimeAccessCodesAggregateArgs = {
+  distinct_on?: InputMaybe<Array<OneTimeAccessCodeSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<OneTimeAccessCodeOrderBy>>;
+  where?: InputMaybe<OneTimeAccessCodeBoolExp>;
+};
+
+
+/** columns and relationships of "units" */
+export type UnitsUserUnitsArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+/** columns and relationships of "units" */
+export type UnitsUserUnitsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
 };
 
 /** aggregated selection of "units" */
@@ -4247,14 +5482,18 @@ export type UnitsBoolExp = {
   _and?: InputMaybe<Array<UnitsBoolExp>>;
   _not?: InputMaybe<UnitsBoolExp>;
   _or?: InputMaybe<Array<UnitsBoolExp>>;
+  access_logs?: InputMaybe<AccessLogsBoolExp>;
+  access_logs_aggregate?: InputMaybe<AccessLogsAggregateBoolExp>;
   building?: InputMaybe<BuildingsBoolExp>;
   building_id?: InputMaybe<UuidComparisonExp>;
   created_at?: InputMaybe<TimestampComparisonExp>;
   id?: InputMaybe<UuidComparisonExp>;
   number?: InputMaybe<IntComparisonExp>;
+  one_time_access_codes?: InputMaybe<OneTimeAccessCodeBoolExp>;
+  one_time_access_codes_aggregate?: InputMaybe<OneTimeAccessCodeAggregateBoolExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
-  users?: InputMaybe<UsersBoolExp>;
-  users_aggregate?: InputMaybe<UsersAggregateBoolExp>;
+  user_units?: InputMaybe<UserUnitsBoolExp>;
+  user_units_aggregate?: InputMaybe<UserUnitsAggregateBoolExp>;
 };
 
 /** unique or primary key constraints on table "units" */
@@ -4270,13 +5509,15 @@ export type UnitsIncInput = {
 
 /** input type for inserting data into table "units" */
 export type UnitsInsertInput = {
+  access_logs?: InputMaybe<AccessLogsArrRelInsertInput>;
   building?: InputMaybe<BuildingsObjRelInsertInput>;
   building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   number?: InputMaybe<Scalars['Int']['input']>;
+  one_time_access_codes?: InputMaybe<OneTimeAccessCodeArrRelInsertInput>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
-  users?: InputMaybe<UsersArrRelInsertInput>;
+  user_units?: InputMaybe<UserUnitsArrRelInsertInput>;
 };
 
 /** aggregate max on columns */
@@ -4342,13 +5583,15 @@ export type UnitsOnConflict = {
 
 /** Ordering options when selecting data from "units". */
 export type UnitsOrderBy = {
+  access_logs_aggregate?: InputMaybe<AccessLogsAggregateOrderBy>;
   building?: InputMaybe<BuildingsOrderBy>;
   building_id?: InputMaybe<OrderBy>;
   created_at?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   number?: InputMaybe<OrderBy>;
+  one_time_access_codes_aggregate?: InputMaybe<OneTimeAccessCodeAggregateOrderBy>;
   updated_at?: InputMaybe<OrderBy>;
-  users_aggregate?: InputMaybe<UsersAggregateOrderBy>;
+  user_units_aggregate?: InputMaybe<UserUnitsAggregateOrderBy>;
 };
 
 /** primary key columns input for table: units */
@@ -4496,28 +5739,236 @@ export type UnitsVarianceOrderBy = {
   number?: InputMaybe<OrderBy>;
 };
 
+/** columns and relationships of "user_units" */
+export type UserUnits = {
+  __typename?: 'user_units';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id: Scalars['uuid']['output'];
+  /** An object relationship */
+  unit: Units;
+  unit_id: Scalars['uuid']['output'];
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  /** An object relationship */
+  user: Users;
+  user_id: Scalars['uuid']['output'];
+};
+
+/** aggregated selection of "user_units" */
+export type UserUnitsAggregate = {
+  __typename?: 'user_units_aggregate';
+  aggregate?: Maybe<UserUnitsAggregateFields>;
+  nodes: Array<UserUnits>;
+};
+
+export type UserUnitsAggregateBoolExp = {
+  count?: InputMaybe<UserUnitsAggregateBoolExpCount>;
+};
+
+export type UserUnitsAggregateBoolExpCount = {
+  arguments?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<UserUnitsBoolExp>;
+  predicate: IntComparisonExp;
+};
+
+/** aggregate fields of "user_units" */
+export type UserUnitsAggregateFields = {
+  __typename?: 'user_units_aggregate_fields';
+  count: Scalars['Int']['output'];
+  max?: Maybe<UserUnitsMaxFields>;
+  min?: Maybe<UserUnitsMinFields>;
+};
+
+
+/** aggregate fields of "user_units" */
+export type UserUnitsAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "user_units" */
+export type UserUnitsAggregateOrderBy = {
+  count?: InputMaybe<OrderBy>;
+  max?: InputMaybe<UserUnitsMaxOrderBy>;
+  min?: InputMaybe<UserUnitsMinOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "user_units" */
+export type UserUnitsArrRelInsertInput = {
+  data: Array<UserUnitsInsertInput>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<UserUnitsOnConflict>;
+};
+
+/** Boolean expression to filter rows from the table "user_units". All fields are combined with a logical 'AND'. */
+export type UserUnitsBoolExp = {
+  _and?: InputMaybe<Array<UserUnitsBoolExp>>;
+  _not?: InputMaybe<UserUnitsBoolExp>;
+  _or?: InputMaybe<Array<UserUnitsBoolExp>>;
+  created_at?: InputMaybe<TimestampComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
+  unit?: InputMaybe<UnitsBoolExp>;
+  unit_id?: InputMaybe<UuidComparisonExp>;
+  updated_at?: InputMaybe<TimestampComparisonExp>;
+  user?: InputMaybe<UsersBoolExp>;
+  user_id?: InputMaybe<UuidComparisonExp>;
+};
+
+/** unique or primary key constraints on table "user_units" */
+export enum UserUnitsConstraint {
+  /** unique or primary key constraint on columns "id" */
+  USER_UNITS_PKEY = 'user_units_pkey'
+}
+
+/** input type for inserting data into table "user_units" */
+export type UserUnitsInsertInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  unit?: InputMaybe<UnitsObjRelInsertInput>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  user?: InputMaybe<UsersObjRelInsertInput>;
+  user_id?: InputMaybe<Scalars['uuid']['input']>;
+};
+
+/** aggregate max on columns */
+export type UserUnitsMaxFields = {
+  __typename?: 'user_units_max_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  user_id?: Maybe<Scalars['uuid']['output']>;
+};
+
+/** order by max() on columns of table "user_units" */
+export type UserUnitsMaxOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  user_id?: InputMaybe<OrderBy>;
+};
+
+/** aggregate min on columns */
+export type UserUnitsMinFields = {
+  __typename?: 'user_units_min_fields';
+  created_at?: Maybe<Scalars['timestamp']['output']>;
+  id?: Maybe<Scalars['uuid']['output']>;
+  unit_id?: Maybe<Scalars['uuid']['output']>;
+  updated_at?: Maybe<Scalars['timestamp']['output']>;
+  user_id?: Maybe<Scalars['uuid']['output']>;
+};
+
+/** order by min() on columns of table "user_units" */
+export type UserUnitsMinOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  user_id?: InputMaybe<OrderBy>;
+};
+
+/** response of any mutation on the table "user_units" */
+export type UserUnitsMutationResponse = {
+  __typename?: 'user_units_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<UserUnits>;
+};
+
+/** on_conflict condition type for table "user_units" */
+export type UserUnitsOnConflict = {
+  constraint: UserUnitsConstraint;
+  update_columns?: Array<UserUnitsUpdateColumn>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+/** Ordering options when selecting data from "user_units". */
+export type UserUnitsOrderBy = {
+  created_at?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  unit?: InputMaybe<UnitsOrderBy>;
+  unit_id?: InputMaybe<OrderBy>;
+  updated_at?: InputMaybe<OrderBy>;
+  user?: InputMaybe<UsersOrderBy>;
+  user_id?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: user_units */
+export type UserUnitsPkColumnsInput = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "user_units" */
+export enum UserUnitsSelectColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  UNIT_ID = 'unit_id',
+  /** column name */
+  UPDATED_AT = 'updated_at',
+  /** column name */
+  USER_ID = 'user_id'
+}
+
+/** input type for updating data in table "user_units" */
+export type UserUnitsSetInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  user_id?: InputMaybe<Scalars['uuid']['input']>;
+};
+
+/** Streaming cursor of the table "user_units" */
+export type UserUnitsStreamCursorInput = {
+  /** Stream column input with initial value */
+  initial_value: UserUnitsStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type UserUnitsStreamCursorValueInput = {
+  created_at?: InputMaybe<Scalars['timestamp']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  unit_id?: InputMaybe<Scalars['uuid']['input']>;
+  updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  user_id?: InputMaybe<Scalars['uuid']['input']>;
+};
+
+/** update columns of table "user_units" */
+export enum UserUnitsUpdateColumn {
+  /** column name */
+  CREATED_AT = 'created_at',
+  /** column name */
+  ID = 'id',
+  /** column name */
+  UNIT_ID = 'unit_id',
+  /** column name */
+  UPDATED_AT = 'updated_at',
+  /** column name */
+  USER_ID = 'user_id'
+}
+
+export type UserUnitsUpdates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<UserUnitsSetInput>;
+  /** filter the rows which have to be updated */
+  where: UserUnitsBoolExp;
+};
+
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
-  /** An object relationship */
-  building: Buildings;
-  building_id: Scalars['uuid']['output'];
-  /** An array relationship */
-  call_logs: Array<CallLogs>;
-  /** An aggregate relationship */
-  call_logs_aggregate: CallLogsAggregate;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   id: Scalars['uuid']['output'];
   name: Scalars['String']['output'];
-  /** An array relationship */
-  notifications: Array<Notifications>;
-  /** An aggregate relationship */
-  notifications_aggregate: NotificationsAggregate;
-  /** An array relationship */
-  one_time_access_codes: Array<OneTimeAccessCode>;
-  /** An aggregate relationship */
-  one_time_access_codes_aggregate: OneTimeAccessCodeAggregate;
   phone: Scalars['String']['output'];
   phone_verified?: Maybe<Scalars['Boolean']['output']>;
   role: RolesEnum;
@@ -4525,70 +5976,11 @@ export type Users = {
   settings: Array<Settings>;
   /** An aggregate relationship */
   settings_aggregate: SettingsAggregate;
-  /** An object relationship */
-  unit: Units;
-  unit_id: Scalars['uuid']['output'];
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersCallLogsArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersCallLogsAggregateArgs = {
-  distinct_on?: InputMaybe<Array<CallLogsSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<CallLogsOrderBy>>;
-  where?: InputMaybe<CallLogsBoolExp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersNotificationsArgs = {
-  distinct_on?: InputMaybe<Array<NotificationsSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<NotificationsOrderBy>>;
-  where?: InputMaybe<NotificationsBoolExp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersNotificationsAggregateArgs = {
-  distinct_on?: InputMaybe<Array<NotificationsSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<NotificationsOrderBy>>;
-  where?: InputMaybe<NotificationsBoolExp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersOneTimeAccessCodesArgs = {
-  distinct_on?: InputMaybe<Array<OneTimeAccessCodeSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<OneTimeAccessCodeOrderBy>>;
-  where?: InputMaybe<OneTimeAccessCodeBoolExp>;
-};
-
-
-/** columns and relationships of "users" */
-export type UsersOneTimeAccessCodesAggregateArgs = {
-  distinct_on?: InputMaybe<Array<OneTimeAccessCodeSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  order_by?: InputMaybe<Array<OneTimeAccessCodeOrderBy>>;
-  where?: InputMaybe<OneTimeAccessCodeBoolExp>;
+  /** An array relationship */
+  user_units: Array<UserUnits>;
+  /** An aggregate relationship */
+  user_units_aggregate: UserUnitsAggregate;
 };
 
 
@@ -4611,38 +6003,31 @@ export type UsersSettingsAggregateArgs = {
   where?: InputMaybe<SettingsBoolExp>;
 };
 
+
+/** columns and relationships of "users" */
+export type UsersUserUnitsArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersUserUnitsAggregateArgs = {
+  distinct_on?: InputMaybe<Array<UserUnitsSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  order_by?: InputMaybe<Array<UserUnitsOrderBy>>;
+  where?: InputMaybe<UserUnitsBoolExp>;
+};
+
 /** aggregated selection of "users" */
 export type UsersAggregate = {
   __typename?: 'users_aggregate';
   aggregate?: Maybe<UsersAggregateFields>;
   nodes: Array<Users>;
-};
-
-export type UsersAggregateBoolExp = {
-  bool_and?: InputMaybe<UsersAggregateBoolExpBoolAnd>;
-  bool_or?: InputMaybe<UsersAggregateBoolExpBoolOr>;
-  count?: InputMaybe<UsersAggregateBoolExpCount>;
-};
-
-export type UsersAggregateBoolExpBoolAnd = {
-  arguments: UsersSelectColumnUsersAggregateBoolExpBoolAndArgumentsColumns;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-  filter?: InputMaybe<UsersBoolExp>;
-  predicate: BooleanComparisonExp;
-};
-
-export type UsersAggregateBoolExpBoolOr = {
-  arguments: UsersSelectColumnUsersAggregateBoolExpBoolOrArgumentsColumns;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-  filter?: InputMaybe<UsersBoolExp>;
-  predicate: BooleanComparisonExp;
-};
-
-export type UsersAggregateBoolExpCount = {
-  arguments?: InputMaybe<Array<UsersSelectColumn>>;
-  distinct?: InputMaybe<Scalars['Boolean']['input']>;
-  filter?: InputMaybe<UsersBoolExp>;
-  predicate: IntComparisonExp;
 };
 
 /** aggregate fields of "users" */
@@ -4660,45 +6045,23 @@ export type UsersAggregateFieldsCountArgs = {
   distinct?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-/** order by aggregate values of table "users" */
-export type UsersAggregateOrderBy = {
-  count?: InputMaybe<OrderBy>;
-  max?: InputMaybe<UsersMaxOrderBy>;
-  min?: InputMaybe<UsersMinOrderBy>;
-};
-
-/** input type for inserting array relation for remote table "users" */
-export type UsersArrRelInsertInput = {
-  data: Array<UsersInsertInput>;
-  /** upsert condition */
-  on_conflict?: InputMaybe<UsersOnConflict>;
-};
-
 /** Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'. */
 export type UsersBoolExp = {
   _and?: InputMaybe<Array<UsersBoolExp>>;
   _not?: InputMaybe<UsersBoolExp>;
   _or?: InputMaybe<Array<UsersBoolExp>>;
-  building?: InputMaybe<BuildingsBoolExp>;
-  building_id?: InputMaybe<UuidComparisonExp>;
-  call_logs?: InputMaybe<CallLogsBoolExp>;
-  call_logs_aggregate?: InputMaybe<CallLogsAggregateBoolExp>;
   created_at?: InputMaybe<TimestampComparisonExp>;
   email?: InputMaybe<StringComparisonExp>;
   id?: InputMaybe<UuidComparisonExp>;
   name?: InputMaybe<StringComparisonExp>;
-  notifications?: InputMaybe<NotificationsBoolExp>;
-  notifications_aggregate?: InputMaybe<NotificationsAggregateBoolExp>;
-  one_time_access_codes?: InputMaybe<OneTimeAccessCodeBoolExp>;
-  one_time_access_codes_aggregate?: InputMaybe<OneTimeAccessCodeAggregateBoolExp>;
   phone?: InputMaybe<StringComparisonExp>;
   phone_verified?: InputMaybe<BooleanComparisonExp>;
   role?: InputMaybe<RolesEnumComparisonExp>;
   settings?: InputMaybe<SettingsBoolExp>;
   settings_aggregate?: InputMaybe<SettingsAggregateBoolExp>;
-  unit?: InputMaybe<UnitsBoolExp>;
-  unit_id?: InputMaybe<UuidComparisonExp>;
   updated_at?: InputMaybe<TimestampComparisonExp>;
+  user_units?: InputMaybe<UserUnitsBoolExp>;
+  user_units_aggregate?: InputMaybe<UserUnitsAggregateBoolExp>;
 };
 
 /** unique or primary key constraints on table "users" */
@@ -4713,72 +6076,38 @@ export enum UsersConstraint {
 
 /** input type for inserting data into table "users" */
 export type UsersInsertInput = {
-  building?: InputMaybe<BuildingsObjRelInsertInput>;
-  building_id?: InputMaybe<Scalars['uuid']['input']>;
-  call_logs?: InputMaybe<CallLogsArrRelInsertInput>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
   name?: InputMaybe<Scalars['String']['input']>;
-  notifications?: InputMaybe<NotificationsArrRelInsertInput>;
-  one_time_access_codes?: InputMaybe<OneTimeAccessCodeArrRelInsertInput>;
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_verified?: InputMaybe<Scalars['Boolean']['input']>;
   role?: InputMaybe<RolesEnum>;
   settings?: InputMaybe<SettingsArrRelInsertInput>;
-  unit?: InputMaybe<UnitsObjRelInsertInput>;
-  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
+  user_units?: InputMaybe<UserUnitsArrRelInsertInput>;
 };
 
 /** aggregate max on columns */
 export type UsersMaxFields = {
   __typename?: 'users_max_fields';
-  building_id?: Maybe<Scalars['uuid']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
-  unit_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-};
-
-/** order by max() on columns of table "users" */
-export type UsersMaxOrderBy = {
-  building_id?: InputMaybe<OrderBy>;
-  created_at?: InputMaybe<OrderBy>;
-  email?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  name?: InputMaybe<OrderBy>;
-  phone?: InputMaybe<OrderBy>;
-  unit_id?: InputMaybe<OrderBy>;
-  updated_at?: InputMaybe<OrderBy>;
 };
 
 /** aggregate min on columns */
 export type UsersMinFields = {
   __typename?: 'users_min_fields';
-  building_id?: Maybe<Scalars['uuid']['output']>;
   created_at?: Maybe<Scalars['timestamp']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   id?: Maybe<Scalars['uuid']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   phone?: Maybe<Scalars['String']['output']>;
-  unit_id?: Maybe<Scalars['uuid']['output']>;
   updated_at?: Maybe<Scalars['timestamp']['output']>;
-};
-
-/** order by min() on columns of table "users" */
-export type UsersMinOrderBy = {
-  building_id?: InputMaybe<OrderBy>;
-  created_at?: InputMaybe<OrderBy>;
-  email?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  name?: InputMaybe<OrderBy>;
-  phone?: InputMaybe<OrderBy>;
-  unit_id?: InputMaybe<OrderBy>;
-  updated_at?: InputMaybe<OrderBy>;
 };
 
 /** response of any mutation on the table "users" */
@@ -4806,22 +6135,16 @@ export type UsersOnConflict = {
 
 /** Ordering options when selecting data from "users". */
 export type UsersOrderBy = {
-  building?: InputMaybe<BuildingsOrderBy>;
-  building_id?: InputMaybe<OrderBy>;
-  call_logs_aggregate?: InputMaybe<CallLogsAggregateOrderBy>;
   created_at?: InputMaybe<OrderBy>;
   email?: InputMaybe<OrderBy>;
   id?: InputMaybe<OrderBy>;
   name?: InputMaybe<OrderBy>;
-  notifications_aggregate?: InputMaybe<NotificationsAggregateOrderBy>;
-  one_time_access_codes_aggregate?: InputMaybe<OneTimeAccessCodeAggregateOrderBy>;
   phone?: InputMaybe<OrderBy>;
   phone_verified?: InputMaybe<OrderBy>;
   role?: InputMaybe<OrderBy>;
   settings_aggregate?: InputMaybe<SettingsAggregateOrderBy>;
-  unit?: InputMaybe<UnitsOrderBy>;
-  unit_id?: InputMaybe<OrderBy>;
   updated_at?: InputMaybe<OrderBy>;
+  user_units_aggregate?: InputMaybe<UserUnitsAggregateOrderBy>;
 };
 
 /** primary key columns input for table: users */
@@ -4831,8 +6154,6 @@ export type UsersPkColumnsInput = {
 
 /** select columns of table "users" */
 export enum UsersSelectColumn {
-  /** column name */
-  BUILDING_ID = 'building_id',
   /** column name */
   CREATED_AT = 'created_at',
   /** column name */
@@ -4848,26 +6169,11 @@ export enum UsersSelectColumn {
   /** column name */
   ROLE = 'role',
   /** column name */
-  UNIT_ID = 'unit_id',
-  /** column name */
   UPDATED_AT = 'updated_at'
-}
-
-/** select "users_aggregate_bool_exp_bool_and_arguments_columns" columns of table "users" */
-export enum UsersSelectColumnUsersAggregateBoolExpBoolAndArgumentsColumns {
-  /** column name */
-  PHONE_VERIFIED = 'phone_verified'
-}
-
-/** select "users_aggregate_bool_exp_bool_or_arguments_columns" columns of table "users" */
-export enum UsersSelectColumnUsersAggregateBoolExpBoolOrArgumentsColumns {
-  /** column name */
-  PHONE_VERIFIED = 'phone_verified'
 }
 
 /** input type for updating data in table "users" */
 export type UsersSetInput = {
-  building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
@@ -4875,7 +6181,6 @@ export type UsersSetInput = {
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_verified?: InputMaybe<Scalars['Boolean']['input']>;
   role?: InputMaybe<RolesEnum>;
-  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
@@ -4889,7 +6194,6 @@ export type UsersStreamCursorInput = {
 
 /** Initial value of the column from where the streaming should start */
 export type UsersStreamCursorValueInput = {
-  building_id?: InputMaybe<Scalars['uuid']['input']>;
   created_at?: InputMaybe<Scalars['timestamp']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['uuid']['input']>;
@@ -4897,14 +6201,11 @@ export type UsersStreamCursorValueInput = {
   phone?: InputMaybe<Scalars['String']['input']>;
   phone_verified?: InputMaybe<Scalars['Boolean']['input']>;
   role?: InputMaybe<RolesEnum>;
-  unit_id?: InputMaybe<Scalars['uuid']['input']>;
   updated_at?: InputMaybe<Scalars['timestamp']['input']>;
 };
 
 /** update columns of table "users" */
 export enum UsersUpdateColumn {
-  /** column name */
-  BUILDING_ID = 'building_id',
   /** column name */
   CREATED_AT = 'created_at',
   /** column name */
@@ -4919,8 +6220,6 @@ export enum UsersUpdateColumn {
   PHONE_VERIFIED = 'phone_verified',
   /** column name */
   ROLE = 'role',
-  /** column name */
-  UNIT_ID = 'unit_id',
   /** column name */
   UPDATED_AT = 'updated_at'
 }

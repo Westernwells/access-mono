@@ -1,0 +1,61 @@
+#!/usr/bin/env zsh
+#
+# /srv/git/myapp.git/hooks/post-receive
+# Make sure this file is executable: chmod +x post-receive
+
+# 1) CONFIGURATION — adjust these paths/IDs to match your setup
+BARE_REPO=https://github.com/theproduct-space/access-mono.git
+WORK_DIR=~/workspace/access-app
+GDRIVE_FOLDER_ID="1pIB-mCcp2spYLU7YfswIBqz4cqhPBJd5"
+LOGFILE=/var/log/git-build.log
+
+# 2) Environment — load your profiles so JAVA_HOME, ANDROID_HOME, node, gradle, etc. are on PATH
+#    (Or hard-code exports if you prefer)
+source ~/.zshrc
+
+# 3) Read stdin for the push info
+while read oldrev newrev refname; do
+  branch=${refname#refs/heads/}
+  echo "$(date "+%Y-%m-%d %H:%M:%S") → push on branch '$branch'" >> "$LOGFILE"
+
+  # only build on specific branches (e.g. main, develop); drop this if you want every branch
+  if [[ "$branch" != "main" && "$branch" != "develop" ]]; then
+    echo "  skipping build for branch '$branch'" >> "$LOGFILE"
+    continue
+  fi
+
+  # 4) Check out the code
+  GIT_WORK_TREE="$WORK_DIR" git --git-dir="$BARE_REPO" checkout -f "$branch"
+  echo "  checked out to $WORK_DIR" >> "$LOGFILE"
+
+  # 5) Build the APK
+  cd "$WORK_DIR/android" || exit 1
+  ./gradlew clean assembleRelease --warning-mode all >> "$LOGFILE" 2>&1
+  if [ $? -ne 0 ]; then
+    echo "  ❌ Android build failed" >> "$LOGFILE"
+    exit 1
+  fi
+  echo "  ✅ Android build succeeded" >> "$LOGFILE"
+
+  # 6) Prepare the artifact name
+  SHA=$(git --git-dir="$BARE_REPO" rev-parse --short "$newrev")
+  APK_SRC="$WORK_DIR/android/app/build/outputs/apk/release/app-release.apk"
+  APK_DST="/tmp/${branch}-${SHA}.apk"
+  cp "$APK_SRC" "$APK_DST"
+  echo "  copied APK to $APK_DST" >> "$LOGFILE"
+
+  # 7) Upload to Google Drive
+  #    (gdrive must be installed & authenticated on this machine)
+  gdrive upload --parent "$GDRIVE_FOLDER_ID" "$APK_DST" >> "$LOGFILE" 2>&1
+  if [ $? -ne 0 ]; then
+    echo "  ❌ gdrive upload failed" >> "$LOGFILE"
+    exit 1
+  fi
+  echo "  🚀 uploaded $APK_DST to Drive folder $GDRIVE_FOLDER_ID" >> "$LOGFILE"
+
+  # 8) Cleanup
+  rm "$APK_DST"
+  echo "  cleaned up temporary file" >> "$LOGFILE"
+done
+
+exit 0

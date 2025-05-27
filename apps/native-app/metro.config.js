@@ -17,21 +17,8 @@ const config = {
       /.*\.cmake\/.*/,
       /.*\.build\/.*/,
       /.*\.git\/.*/
-    ],
-    // Tells Metro where to find hoisted packages in the monorepo's root node_modules
-    nodeModulesPaths: [
-      path.resolve(__dirname, 'node_modules'),
-      path.resolve(__dirname, '../../../node_modules'),
-    ],
-    // Fallback for module resolution
-    extraNodeModules: {
-      '@babel/runtime': path.resolve(__dirname, '../../../node_modules/@babel/runtime'),
-    },
+    ]
   },
-  watchFolders: [
-    path.resolve(__dirname, 'node_modules'),
-    path.resolve(__dirname, '../../../node_modules'),
-  ],
 };
 
 module.exports = withNativeWind(

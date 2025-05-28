@@ -5,10 +5,11 @@ import { UserSignUpOutput } from "types/generated/graphql";
 import { createUser } from "services/auth/createUser";
 import { generateJwt } from "services/jwt/generateJwt";
 import { checkVerification } from "services/twilio/checkVerification";
+import { standardizeError } from "utils/errorUtils";
 
 export async function userSignUpController(
   req: Request<
-    {},
+    never,
     UserSignUpOutput | HasuraActionErrorResponse,
     { input: { signUpData: UserSignUpInput } }
   >,
@@ -47,10 +48,11 @@ export async function userSignUpController(
     });
 
     return res.status(200).json({ accessToken, userId });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("✏️ [User Sign Up] Error:", error);
-    return res.status(error?.status || 500).json({
-      message: error?.message || String(error),
+    const { message, status } = standardizeError(error);
+    return res.status(status).json({
+      message: message,
     });
   }
 }

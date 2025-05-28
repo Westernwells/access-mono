@@ -1,5 +1,6 @@
 import twilio from "twilio";
 import createHttpError from "http-errors";
+import { standardizeError } from "utils/errorUtils";
 
 // Ref: https://www.twilio.com/docs/verify/quickstarts/node-express#install-nodejs-and-the-twilio-helper-library
 
@@ -35,12 +36,11 @@ export async function checkVerification({
     if (!verificationCheck.valid) {
       throw createHttpError(400, "Invalid verification code");
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const { message, status } = standardizeError(error);
     throw createHttpError(
-      error?.status || 500,
-      `Error checking SMS verification: ${
-        error instanceof Error ? error.message : String(error)
-      }`
+      status,
+      `Error checking SMS verification: ${message}`
     );
   }
 }

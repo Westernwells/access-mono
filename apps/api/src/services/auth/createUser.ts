@@ -2,6 +2,7 @@ import createHttpError from "http-errors";
 import { createAdminClient } from "lib/graphql/graphql-client";
 import { INSERT_USER } from "lib/graphql/mutations/insertUser";
 import { InsertUserMutationVariables } from "types/generated/graphql";
+import { standardizeError } from "utils/errorUtils";
 
 export async function createUser({
   variables,
@@ -18,12 +19,11 @@ export async function createUser({
     }
 
     return { userId: insert_users_one.id };
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const { message, status } = standardizeError(error);
     throw createHttpError(
-      error?.status || 500,
-      `Error creating user: ${
-        error instanceof Error ? error.message : String(error)
-      }`
+      status,
+      `Error creating user: ${message}`
     );
   }
 }

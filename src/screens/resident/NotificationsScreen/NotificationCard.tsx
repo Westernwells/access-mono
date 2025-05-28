@@ -19,8 +19,8 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
   type,
 }) => {
   return (
-    <Card className="mb-4 p-4 rounded-lg ">
-      <Text size="md" className="text-typography-500">
+    <Card className="mb-2 px-1 rounded-lg bg-transparent">
+      <Text size="lg" className="text-typography-950">
         {title}
       </Text>
 
@@ -40,13 +40,22 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
           {time}
         </Text>
 
-        <Text
-          size="sm"
-          className={`ml-2 ${
-            type === 'missed' ? 'text-error-500' : 'text-typography-500'
-          }`}>
-          {ago}
-        </Text>
+        <HStack className="items-center space-x-1 ml-2">
+          <Text
+            size="sm"
+            className={
+              type === 'missed' ? 'text-error-500' : 'text-typography-500'
+            }>
+            •
+          </Text>
+          <Text
+            size="sm"
+            className={
+              type === 'missed' ? 'text-error-500' : 'text-typography-500'
+            }>
+            {ago}
+          </Text>
+        </HStack>
       </HStack>
     </Card>
   );

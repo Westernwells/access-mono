@@ -8,6 +8,14 @@ type DatePickerFieldProps = {
   onChange: (date: Date) => void;
   placeholderText?: string;
 };
+const isDefaultDate = (date: Date) => {
+  const now = new Date();
+  return (
+    date.getFullYear() === now.getFullYear() &&
+    date.getMonth() === now.getMonth() &&
+    date.getDate() === now.getDate()
+  );
+};
 
 const DatePickerField: React.FC<DatePickerFieldProps> = ({
   value,
@@ -20,10 +28,12 @@ const DatePickerField: React.FC<DatePickerFieldProps> = ({
     <>
       <Button
         onPress={() => setIsOpen(true)}
-        variant="outline"
+        variant="link"
         className="flex-row justify-between items-center">
-        <ButtonText className="text-typography-950">
-          {value instanceof Date ? value.toDateString() : placeholderText}
+        <ButtonText className="text-typography-500" size="md">
+          {value instanceof Date && !isDefaultDate(value)
+            ? value.toDateString()
+            : placeholderText}
         </ButtonText>
 
         <ButtonIcon

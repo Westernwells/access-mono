@@ -11,10 +11,8 @@ import {LobbyCameraIcon} from '@/components/icons/LobbyCameraIcon';
 import {ResidentStackParamList} from '@/navigation/resident/ResidentStacks';
 import {useTranslation} from 'react-i18next';
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<
-  ResidentStackParamList,
-  'ResidentHome'
->;
+type HomeScreenNavigationProp =
+  NativeStackNavigationProp<ResidentStackParamList>;
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();

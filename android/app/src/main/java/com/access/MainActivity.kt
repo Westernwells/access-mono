@@ -1,19 +1,54 @@
 package com.access
 
+import android.Manifest
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
+import com.twiliovoicereactnative.VoiceActivityProxy
 
 class MainActivity : ReactActivity() {
+ private val voiceActivityProxy: VoiceActivityProxy = VoiceActivityProxy(
+    this
+  ) { permission ->
+    if (Manifest.permission.RECORD_AUDIO.equals(permission)) {
+      Toast.makeText(
+        this@MainActivity,
+        "Microphone permissions needed. Please allow in your application settings.",
+        Toast.LENGTH_LONG
+      ).show()
+    } else if ((Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) &&
+      Manifest.permission.BLUETOOTH_CONNECT.equals(permission)
+    ) {
+      Toast.makeText(
+        this@MainActivity,
+        "Bluetooth permissions needed. Please allow in your application settings.",
+        Toast.LENGTH_LONG
+      ).show()
+    } else if ((Build.VERSION.SDK_INT > Build.VERSION_CODES.S_V2) &&
+      Manifest.permission.POST_NOTIFICATIONS.equals(permission)
+    ) {
+      Toast.makeText(
+        this@MainActivity,
+        "Notification permissions needed. Please allow in your application settings.",
+        Toast.LENGTH_LONG
+      ).show()
+    }
+  }
+
 
   /**
    * Required for react-native-screens
    */
   override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(null)
+    super.onCreate(savedInstanceState)
+    voiceActivityProxy.onCreate(savedInstanceState)
   }
+ 
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -27,4 +62,14 @@ class MainActivity : ReactActivity() {
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
+  override fun onDestroy() {
+    super.onDestroy()
+    voiceActivityProxy.onDestroy()
+  }
+
+  override fun onNewIntent(intent: Intent?) {
+    super.onNewIntent(intent)
+    voiceActivityProxy.onNewIntent(intent)
+  }
 }

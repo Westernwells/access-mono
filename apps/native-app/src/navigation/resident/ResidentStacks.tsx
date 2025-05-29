@@ -21,10 +21,15 @@ import ReportIssueScreen from '@/screens/resident/settings/ReportIssueScreen';
 import TermsAndConditionsScreen from '@/screens/resident/TermsAndConditionsScreen';
 import PrivacyPolicyScreen from '@/screens/resident/PrivacyPolicyScreen';
 import GenerateAccessCode from '@/screens/resident/GenerateAccessCodeScreen';
-
-import {useTranslation} from 'react-i18next';
 import AnnouncementScreen from '@/screens/resident/AnnouncementScreen';
 import AnnouncementDetailScreen from '@/screens/resident/AnnouncementDetailScreen';
+import Choose2FAMethodScreen from '@/screens/resident/settings/twoFactorAuth/Choose2FAMethodScreen';
+import TwoFactorAuthEnterScreen from '@/screens/resident/settings/twoFactorAuth/TwoFactorAuthEnterScreen';
+import TwoFactorAuthVerificationScreen from '@/screens/resident/settings/twoFactorAuth/TwoFactorAuthVerificationScreen';
+import ContactSupportScreen from '@/screens/resident/settings/ContactSupportScreen';
+
+import {useTranslation} from 'react-i18next';
+
 export type ResidentStackParamList = {
   ResidentHome: undefined;
   ResSignIn: undefined;
@@ -249,6 +254,44 @@ export default function ResidentStacks() {
         options={{
           headerShown: true,
           title: t('Announcement Details'),
+          header: props => <CustomHeader {...props} />,
+        }}
+      />
+      <Stack.Screen
+        name="ResChoose2FAMethod"
+        component={Choose2FAMethodScreen}
+        options={{
+          headerShown: true,
+          title: t('choose2faMethod'),
+          header: props => <CustomHeader {...props} />,
+        }}
+      />
+      <Stack.Screen
+        name="ResTwoFactorAuthEnter"
+        component={TwoFactorAuthEnterScreen}
+        options={{
+          headerShown: true,
+          // todo, pass the translated page title: Email, SMS or Authenticator App
+          title: t(''),
+          header: props => <CustomHeader {...props} />,
+        }}
+      />
+      <Stack.Screen
+        name="ResTwoFactorAuthVerification"
+        component={TwoFactorAuthVerificationScreen}
+        options={{
+          headerShown: true,
+          // todo, pass the translated page title: Email, SMS or Authenticator App
+          title: t(''),
+          header: props => <CustomHeader {...props} />,
+        }}
+      />
+      <Stack.Screen
+        name="ResContactSupport"
+        component={ContactSupportScreen}
+        options={{
+          headerShown: true,
+          title: t(''),
           header: props => <CustomHeader {...props} />,
         }}
       />

@@ -3,10 +3,11 @@ import { HasuraActionErrorResponse } from "types/hasuraActionErrorResponse";
 import { UserSignUpInput } from "types/generated/graphql";
 import { RequestSmsVerifCodeOutput } from "types/generated/graphql";
 import { createVerification } from "services/twilio/createVerification";
+import { standardizeError } from "utils/errorUtils";
 
 export async function requestSmsVerifCodeController(
   req: Request<
-    {},
+    never,
     RequestSmsVerifCodeOutput | HasuraActionErrorResponse,
     { input: { requestSmsVerifCodeData: UserSignUpInput } }
   >,
@@ -20,10 +21,14 @@ export async function requestSmsVerifCodeController(
     });
 
     return res.status(200).json({ verificationStatus });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("☎️ [Request SMS Verification Code] Error:", error);
-    return res.status(error?.status || 500).json({
-      message: error?.message || String(error),
+
+    // Use the utility to standardize the error
+    const { message, status } = standardizeError(error);
+
+    return res.status(status).json({
+      message: message,
     });
   }
 }

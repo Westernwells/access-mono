@@ -29,10 +29,20 @@
     "hasura:metadata": "cd packages/hasura && hasura metadata apply --envfile ../../.env && cd ../..",
     "hasura:reload": "cd packages/hasura && hasura metadata reload --envfile ../../.env && cd ../..",
     "packages:reset": "podman-compose down && podman volume rm access-mono_node_modules_volume -f && podman-compose up --build -d",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint . --fix"
   },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "@eslint/eslintrc": "^3.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
+    "eslint": "^9.27.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^8.0.0",
+    "prettier": "^3.5.3",
+    "typescript": "5.8.3"
   },
   "lint-staged": {
     "apps/native-app/**/*.{js,ts,tsx}": [

@@ -1,8 +1,29 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
-plugins { id("com.facebook.react.settings") }
-extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
-rootProject.name = 'access'
-include ':app'
+// android/settings.gradle
+
+pluginManagement {
+    // This tells Gradle where to find the React Native Gradle Plugin
+    includeBuild("../node_modules/@react-native/gradle-plugin")
+}
+
+plugins {
+    // Apply the React Native settings plugin
+    id("com.facebook.react.settings")
+}
+
+// Configure the React Native Settings Extension
+// This is where the new autolinking mechanism is primarily triggered for settings.gradle
+extensions.configure(com.facebook.react.ReactSettingsExtension) { ex ->
+    // This command will attempt to automatically discover and include native module projects
+    ex.autolinkLibrariesFromCommand()
+}
+
+rootProject.name = 'access' // Your project name
+
+include ':app' // Includes your main application module
+
+// This line ensures the React Native Gradle Plugin itself is available as a build source.
+// It's often included in pluginManagement but sometimes also explicitly here.
+// If your build works without it being duplicated here, you might not need it if it's already in pluginManagement.
 includeBuild('../node_modules/@react-native/gradle-plugin')
 
 // Add these lines to include the native modules. Auto linking because build would fail saying they were missing.
@@ -26,3 +47,20 @@ project(':react-native-svg').projectDir = new File(rootProject.projectDir, '../n
 
 include ':react-native-localize'
 project(':react-native-localize').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-localize/android')
+
+// --- Manual include for twilio-voice-react-native (IMPORTANT FALLBACK/EXPLICIT LINK) ---
+// This section explicitly tells Gradle where to find the twilio-voice-react-native Android project.
+// Even with autolinkLibrariesFromCommand(), adding this manually can ensure it's found,
+// especially if there are any issues with the library's own configuration for autolinking.
+//
+// Make sure the path '../node_modules/twilio-voice-react-native/android' is correct
+// relative to your `android` folder.
+
+include ':twilio-voice-react-native'
+project(':twilio-voice-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/twilio-voice-react-native/android')
+
+// You might also see this variant for scoped packages, though for manual includes, the one above is common:
+// include ':@twilio-voice-react-native'
+// project(':@twilio-voice-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/twilio-voice-react-native/android')
+
+// --- End of manual include section ---

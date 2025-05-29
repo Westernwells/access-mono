@@ -10,10 +10,7 @@ import {useTranslation} from 'react-i18next';
 
 import LanguageSelector from '@/components/LanguageSelector';
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<
-  KioskStackParamList,
-  'KioskHome'
->;
+type HomeScreenNavigationProp = NativeStackNavigationProp<KioskStackParamList>;
 
 const HomeScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();

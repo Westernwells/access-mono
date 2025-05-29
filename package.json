@@ -34,11 +34,11 @@
   "devDependencies": {
     "husky": "^8.0.0"
   },
-  "lint-staged": {
-    "apps/native-app/**/*.{js,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
+"lint-staged": {
+  "apps/native-app/**/*.{js,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ]
+},
   "license": "MIT"
 }

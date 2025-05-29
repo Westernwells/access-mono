@@ -25,7 +25,7 @@ const CallLogCard: React.FC<CallLogCardProps> = ({
   ago,
 }) => {
   return (
-    <Card className="p-4 sm:p-5 md:p-6 rounded-2xl shadow-sm  mb-1">
+    <Card className="p-4 sm:p-5 bg-transparent md:p-6 rounded-2xl shadow-sm  mb-1">
       <Text
         size="sm"
         className="text-typography-950 mb-1 mt-1 text-base sm:text-lg md:text-xl">

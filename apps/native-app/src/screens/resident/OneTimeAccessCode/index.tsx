@@ -34,10 +34,11 @@ const OneTimeAccessCodeScreen = () => {
   ];
 
   return (
-    <PageLayout disableScroll={true}>
+    <PageLayout>
       <Box className="px-6 py-10 flex flex-col gap-6">
         <Button
-          className="border border-dashed border-outline-500 rounded-lg py-4 mb-6 items-center"
+          className="border border-dashed border-secondary-500 items-center px-4 py-3 sm:px-6 sm:py-4"
+          action="transparent"
           onPress={() => navigation.navigate('ResGenerateAccessCode')}>
           <ButtonText>Generate New Code</ButtonText>
         </Button>
@@ -54,6 +55,8 @@ const OneTimeAccessCodeScreen = () => {
             />
           )}
           contentContainerStyle={{gap: 16}}
+          nestedScrollEnabled={true}
+          scrollEnabled={false} // Let parent scroll
         />
       </Box>
     </PageLayout>

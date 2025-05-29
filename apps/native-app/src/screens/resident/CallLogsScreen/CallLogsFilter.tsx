@@ -35,9 +35,9 @@ const CallLogsFilter: React.FC<CallLogsFilterProps> = ({
             size="md"
             onPress={() => onTypeChange(type)}
             variant={activeType === type ? 'solid' : 'outline'}
-            action={activeType === type ? 'primary' : 'contrast'}
+            action={activeType === type ? 'primary' : 'surface'}
             className={`px-4 mx-2 mb-8 ${
-              activeType === type ? 'bg-primary-700' : 'bg-backgroud-600'
+              activeType === type ? 'bg-primary-700' : 'bg-secondary-500'
             }`}>
             <ButtonText className="text-typography-950">
               {capitalize(type)}

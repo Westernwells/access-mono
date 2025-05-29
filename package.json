@@ -36,8 +36,8 @@
   },
   "lint-staged": {
     "apps/native-app/**/*.{js,ts,tsx}": [
-      "cd apps/native-app && eslint --fix",
-      "cd apps/native-app && prettier --write"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "license": "MIT"

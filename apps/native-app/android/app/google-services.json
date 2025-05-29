@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "149612707265",
+    "project_id": "access-app-7fad0",
+    "storage_bucket": "access-app-7fad0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149612707265:android:e90e334ba0409462d04340",
+        "android_client_info": {
+          "package_name": "com.access"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoPS0dHxDjSDkB8ViOAMlWi8TznWDtXWE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
-import {ChevronRight, Building2} from 'lucide-react-native';
+import {FlatList, Dimensions, View} from 'react-native';
+import {ChevronRightIcon} from '@/components/ui/icon';
 import {Button, ButtonIcon, ButtonText} from '@/components/ui/button';
 import {Box} from '@/components/ui/box';
 import {HStack} from '@/components/ui/hstack';
@@ -18,7 +18,10 @@ import {useNavigation} from '@react-navigation/native';
 import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {ResidentStackParamList} from '@/navigation/resident/ResidentStacks';
 import {useReusableToast} from '@/components/ReusableToast';
-import {CheckIcon} from '@/components/ui/icon';
+import GreenCheckIcon from '@/components/icons/GreenCheckIcon';
+import RedCheckIcon from '@/components/icons/RedCheckIcon';
+import {ApartmentIcon} from '@/components/icons/ApartmentIcon';
+import {Card} from '@/components/ui/card';
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   ResidentStackParamList,
   'ResidentHome'
@@ -74,20 +77,21 @@ const DashboardScreen = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const {show} = useReusableToast();
 
+  const screenWidth = Dimensions.get('window').width;
   const handleDoorUnlock = async () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 5000)); // Simulated door unlock delay
       show({
         title: 'Door unlocked!',
         subtitle: 'The remote door was successfully unlocked.',
-        icon: CheckIcon,
+        icon: GreenCheckIcon,
         placement: 'top',
       });
     } catch (error) {
       show({
         title: 'Unlock failed',
         subtitle: 'Could not unlock the door.',
-        icon: CheckIcon,
+        icon: RedCheckIcon,
         placement: 'top',
       });
     }
@@ -95,43 +99,48 @@ const DashboardScreen = () => {
 
   return (
     <PageLayout safePadding={false} title="Dashboard">
-      <Box className="flex px-4 pt-6">
+      <Box className="flex px-4 sm:px-6 md:px-8 pt-6">
         {/* Property Name */}
-        <HStack className="bg-background-600 p-3 rounded-2xl items-center mb-4 shadow-md w-full">
-          <Box className="p-3 rounded-full mr-4">
-            <Icon as={Building2} className="text-typography-500" size="md" />
-          </Box>
-          <Text className="text-typography-950 font-semibold" size="lg">
-            Sunrise Towers: 001
-          </Text>
-        </HStack>
+        <Card className="mb-4 w-full p-2 ">
+          <HStack className=" p-2 gap-3 items-center  w-full">
+            <Icon
+              as={ApartmentIcon}
+              className="text-transparent h-6 w-6"
+              size="md"
+            />
+
+            <Text className="text-typography-950 font-semibold" size="lg">
+              Sunrise Towers: 001
+            </Text>
+          </HStack>
+        </Card>
 
         {/* Live Lobby Camera */}
-        <Box className="bg-background-600 rounded-2xl mb-4 shadow-lg w-full">
+        <Card className=" mb-4 w-full p-2 overflow-hidden">
           <Image
             source={{
               uri: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be',
             }}
             alt="Lobby"
-            className="w-full h-40 rounded-t-2xl"
+            className="w-full  h-40 md:h-60 lg:h-72 "
           />
           <Button
-            className="flex-row items-center justify-between p-4 rounded-b-2xl"
-            onPress={() => navigation.navigate('ResOneTimeAccessCode')}
+            className="px-2 py-4 mt-2 md:p-5 flex-row  items-center justify-between"
+            onPress={() => navigation.navigate('ResLiveLobbyCamera')}
             variant="solid"
             action="surface"
             size="xl">
-            <HStack className="items-center">
+            <HStack className="flex flex-row items-center gap-3">
               <ButtonIcon
                 size="md"
                 as={LobbyCameraIcon}
-                className="text-transparent h-6 w-6"
+                className="text-transparent   h-6 w-6"
               />
-              <ButtonText>Live Lobby Camera</ButtonText>
+              <ButtonText size="sm">Live Lobby Camera</ButtonText>
             </HStack>
-            <ButtonIcon as={ChevronRight} />
+            <ButtonIcon as={ChevronRightIcon} />
           </Button>
-        </Box>
+        </Card>
 
         {/* Quick Actions */}
         <VStack space="md" className="mb-6 w-full">
@@ -140,16 +149,16 @@ const DashboardScreen = () => {
             onPress={handleDoorUnlock}
             action="surface"
             size="xl"
-            className="p-4 flex-row items-center justify-between">
-            <HStack className="items-center">
+            className="p-4 md:p-5 flex-row items-center justify-between">
+            <HStack className="flex flex-row items-center gap-3">
               <ButtonIcon
                 size="md"
                 as={DoorUnlockColorIcon}
                 className="text-transparent h-6 w-6"
               />
-              <ButtonText>Remote Door Unlock</ButtonText>
+              <ButtonText size="sm">Remote Door Unlock</ButtonText>
             </HStack>
-            <ButtonIcon as={ChevronRight} />
+            <ButtonIcon as={ChevronRightIcon} />
           </Button>
 
           <Button
@@ -157,31 +166,33 @@ const DashboardScreen = () => {
             onPress={() => navigation.navigate('ResOneTimeAccessCode')}
             action="surface"
             size="xl"
-            className="p-4 flex-row items-center justify-between">
-            <HStack className="items-center ">
+            className="p-4 md:p-5 flex-row items-center justify-between">
+            <HStack className="flex flex-row items-center gap-3">
               <ButtonIcon
                 size="md"
                 as={AccessCodeIcon}
                 className="text-transparent h-6 w-6"
               />
-              <ButtonText>One-Time Access Code</ButtonText>
+              <ButtonText size="sm">One-Time Access Code</ButtonText>
             </HStack>
-            <ButtonIcon as={ChevronRight} />
+            <ButtonIcon as={ChevronRightIcon} />
           </Button>
         </VStack>
 
         {/* Announcements */}
-        <HStack className="justify-between items-center mb-2 w-full">
-          <Text className="text-typography-950" size="lg">
+        <HStack className="justify-between items-center  mb-4 md:mb-6 w-full">
+          <Text className="text-typography-950" size="md">
             Announcements
           </Text>
           <Button
-            size="sm"
-            variant="link"
-            action="surface"
+            size="md"
+            variant="solid"
+            action="transparent"
             className="flex-row items-center"
             onPress={() => navigation.navigate('ResAnnouncementScreen')}>
-            <ButtonText className="text-primary-500" size="sm">
+            <ButtonText
+              className="text-primary-500 text-sm md:text-base"
+              size="md">
               See More
             </ButtonText>
           </Button>
@@ -190,13 +201,19 @@ const DashboardScreen = () => {
         <FlatList
           data={announcements}
           keyExtractor={item => item.id}
-          renderItem={({item}) => (
-            <AnnouncementCard announcement={item} icon={<Icon size="sm" />} />
-          )}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{paddingHorizontal: 4}}
-          ItemSeparatorComponent={() => <View className="mr-2" />}
+          contentContainerStyle={{paddingHorizontal: 8}}
+          renderItem={({item, index}) => (
+            <View
+              // container for the card
+              style={{
+                width: screenWidth / 2 - 12, // half screen minus margin approx
+                marginRight: index !== announcements.length - 1 ? 8 : 0, // right margin except last
+              }}>
+              <AnnouncementCard announcement={item} horizontal />
+            </View>
+          )}
           className="pb-16"
         />
       </Box>

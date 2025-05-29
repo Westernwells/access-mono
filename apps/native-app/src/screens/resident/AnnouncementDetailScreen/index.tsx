@@ -39,7 +39,9 @@ const AnnouncementDetailScreen: React.FC = () => {
           <Text className="text-typography-500  mb-4" size="sm">
             {date}
           </Text>
-          <Text className="text-typography-500 ">{description}</Text>
+          <Text className="text-typography-950 text-base " size="md">
+            {description}
+          </Text>
         </VStack>
       </Box>
     </PageLayout>

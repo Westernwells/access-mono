@@ -3,7 +3,6 @@ import {FlatList} from 'react-native';
 import {Box} from '@/components/ui/box';
 import PageLayout from '@/components/layouts/PageLayout';
 import AnnouncementCard from './AnnouncementCard';
-import {Icon} from '@/components/ui/icon';
 import {AnnouncementTypes, Announcement} from '@/types/AnnouncementTypes';
 
 const announcements: Announcement[] = [
@@ -66,7 +65,7 @@ const AnnouncementScreen = () => {
             return (
               <AnnouncementCard
                 announcement={item}
-                icon={<Icon size="sm" />} // Pass an icon
+                horizontal={false} // Vertical mode
               />
             );
           }}

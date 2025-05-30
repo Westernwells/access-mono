@@ -1,12 +1,9 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { Box } from '@/components/ui/box';
-import { Text } from '@/components/ui/text';
+import {FlatList} from 'react-native';
+import {Box} from '@/components/ui/box';
 import PageLayout from '@/components/layouts/PageLayout';
 import AnnouncementCard from './AnnouncementCard';
-import { Icon } from '@/components/ui/icon';
-import { AnnouncementTypes, announcementIcons, Announcement } from '@/types/AnnouncementTypes';
-
+import {AnnouncementTypes, Announcement} from '@/types/AnnouncementTypes';
 
 const announcements: Announcement[] = [
   {
@@ -14,7 +11,8 @@ const announcements: Announcement[] = [
     type: AnnouncementTypes.MAINTENANCE,
     title: 'Water Supply Notice: Maintenance',
     date: 'Mar 25, 2025',
-    description: 'There will be a temporary disruption in water supply due to maintenance work.',
+    description:
+      'There will be a temporary disruption in water supply due to maintenance work.',
   },
   {
     id: '2',
@@ -53,7 +51,6 @@ const announcements: Announcement[] = [
   },
 ];
 
-
 //
 // Screen Component
 //
@@ -63,18 +60,17 @@ const AnnouncementScreen = () => {
       <Box className="flex-1 px-2 sm:px-4 md:px-6 pt-6 md:pt-8">
         <FlatList
           data={announcements}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => {
-
+          keyExtractor={item => item.id}
+          renderItem={({item}) => {
             return (
               <AnnouncementCard
                 announcement={item}
-                icon={<Icon size="sm" />}  // Pass an icon
+                horizontal={false} // Vertical mode
               />
             );
           }}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 16, paddingHorizontal: 8 }}
+          contentContainerStyle={{paddingBottom: 16, paddingHorizontal: 8}}
         />
       </Box>
     </PageLayout>

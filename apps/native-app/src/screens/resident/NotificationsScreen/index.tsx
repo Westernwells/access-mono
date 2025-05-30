@@ -97,10 +97,8 @@ const NotificationsScreen = () => {
           data={notifications}
           keyExtractor={item => item.date}
           renderItem={({item: section}) => (
-            <Box key={section.date}>
-              <Heading
-                className="text-typography-950 mb-1 mt-1 text-base sm:text-lg md:text-xl"
-                size="sm">
+            <Box key={section.date} className="mb-6">
+              <Heading className="text-typography-500 mb-2 text-lg " size="sm">
                 {section.date}
               </Heading>
               {section.data.map((notification, index) => (

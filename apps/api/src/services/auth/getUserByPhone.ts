@@ -2,6 +2,7 @@ import createHttpError from "http-errors";
 import { createAdminClient } from "lib/graphql/graphql-client";
 import { GET_USER_BY_PHONE } from "lib/graphql/queries/getUserByPhone";
 import { GetUserByPhoneQueryVariables } from "types/generated/graphql";
+import { standardizeError } from "utils/errorUtils";
 
 export async function getUserByPhone({
   variables,
@@ -21,12 +22,11 @@ export async function getUserByPhone({
     }
 
     return { userId: users[0].id };
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const { message, status } = standardizeError(error);
     throw createHttpError(
-      error?.status || 500,
-      `Error fetching user by phone: ${
-        error instanceof Error ? error.message : String(error)
-      }`
+      status,
+      `Error fetching user by phone: ${message}`
     );
   }
 }

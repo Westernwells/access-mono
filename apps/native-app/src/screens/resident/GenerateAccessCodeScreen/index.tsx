@@ -3,6 +3,8 @@ import {Box} from '@/components/ui/box';
 import {Button, ButtonText} from '@/components/ui/button';
 import {Switch} from '@/components/ui/switch';
 import {Input, InputField} from '@/components/ui/input';
+import {Card} from '@/components/ui/card';
+import {HStack} from '@/components/ui/hstack';
 import PageLayout from '@/components/layouts/PageLayout';
 import {useForm, Controller} from 'react-hook-form';
 import {z} from 'zod';
@@ -68,7 +70,7 @@ const GenerateAccessCodeScreen = () => {
 
   return (
     <PageLayout safePadding={false}>
-      <Box className="flex-1 px-4 pt-4">
+      <Box className="flex-1 px-4 pt-4 sm:px-6 md:px-8 pt-4 sm:pt-6">
         <Box className="flex flex-col gap-y-6">
           {/* Purpose */}
           <FormControl isInvalid={!!errors.purpose}>
@@ -97,62 +99,42 @@ const GenerateAccessCodeScreen = () => {
             )}
           </FormControl>
 
-          {/* Switch */}
-          <FormControl>
-            <FormControlLabel>
-              <FormControlLabelText>Only one day</FormControlLabelText>
-            </FormControlLabel>
-            <Controller
-              control={control}
-              name="date.onlyOneDay"
-              render={({field: {value}}) => (
-                <Switch
-                  value={value}
-                  onValueChange={val => {
-                    setValue('date', {
-                      onlyOneDay: val,
-                      startDate: new Date(),
-                      endDate: undefined, // Reset endDate when switching to "Only one day"
-                    });
-                  }}
+          <Card className="p-4 space-y-4 rounded-2xl  shadow-sm">
+            {/* Only One Day Switch */}
+            <FormControl>
+              <HStack className="items-center justify-between mb-4">
+                <FormControlLabel>
+                  <FormControlLabelText>Only one day</FormControlLabelText>
+                </FormControlLabel>
+                <Controller
+                  control={control}
+                  name="date.onlyOneDay"
+                  render={({field: {value}}) => (
+                    <Switch
+                      value={value}
+                      onValueChange={val => {
+                        setValue('date', {
+                          onlyOneDay: val,
+                          startDate: new Date(),
+                          endDate: undefined,
+                        });
+                      }}
+                    />
+                  )}
                 />
-              )}
-            />
-          </FormControl>
+              </HStack>
+            </FormControl>
 
-          {/* Start Date Picker */}
-          <FormControl isInvalid={!!errors.date?.startDate}>
-            {!dateValue.onlyOneDay && (
-              <FormControlLabel>
-                <FormControlLabelText>From Date</FormControlLabelText>
-              </FormControlLabel>
-            )}
-            <Controller
-              control={control}
-              name="date.startDate"
-              render={({field: {value, onChange}}) => (
-                <DatePickerField
-                  value={value ?? null}
-                  onChange={selectedDate => {
-                    if (selectedDate instanceof Date) {
-                      onChange(selectedDate);
-                    }
-                  }}
-                  placeholderText="Select a valid date"
-                />
+            {/* Start Date Picker */}
+            <FormControl isInvalid={!!errors.date?.startDate}>
+              {!dateValue.onlyOneDay && (
+                <FormControlLabel>
+                  <FormControlLabelText>From Date</FormControlLabelText>
+                </FormControlLabel>
               )}
-            />
-          </FormControl>
-
-          {/* End Date Picker */}
-          {!dateValue.onlyOneDay && (
-            <FormControl isInvalid={!!errors.date?.endDate}>
-              <FormControlLabel>
-                <FormControlLabelText>To Date</FormControlLabelText>
-              </FormControlLabel>
               <Controller
                 control={control}
-                name="date.endDate"
+                name="date.startDate"
                 render={({field: {value, onChange}}) => (
                   <DatePickerField
                     value={value ?? null}
@@ -161,17 +143,41 @@ const GenerateAccessCodeScreen = () => {
                         onChange(selectedDate);
                       }
                     }}
-                    placeholderText="Select end date"
+                    placeholderText="Select a valid date"
                   />
                 )}
               />
             </FormControl>
-          )}
+
+            {/* End Date Picker (conditionally rendered) */}
+            {!dateValue.onlyOneDay && (
+              <FormControl isInvalid={!!errors.date?.endDate}>
+                <FormControlLabel>
+                  <FormControlLabelText>To Date</FormControlLabelText>
+                </FormControlLabel>
+                <Controller
+                  control={control}
+                  name="date.endDate"
+                  render={({field: {value, onChange}}) => (
+                    <DatePickerField
+                      value={value ?? null}
+                      onChange={selectedDate => {
+                        if (selectedDate instanceof Date) {
+                          onChange(selectedDate);
+                        }
+                      }}
+                      placeholderText="Select end date"
+                    />
+                  )}
+                />
+              </FormControl>
+            )}
+          </Card>
 
           {/* Submit Button */}
           <Button
             variant="solid"
-            action="primary"
+            action="surface"
             className="mt-6"
             onPress={handleSubmit(onSubmit)}>
             <ButtonText>Generate New Code</ButtonText>
